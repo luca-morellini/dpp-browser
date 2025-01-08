@@ -1,0 +1,61 @@
+{
+    "Batch": {
+        "BatchID": "BATCH456",
+        "BatchProperties": [
+            {
+                "PropertyName": "Composizione Materiale",
+                "PropertyDescription": "Percentuale di lana",
+                "PropertyValueType": "V",
+                "PropertyValue": 100,
+                "PropertyUnitOfMeasure": "%",
+                "PropertyUrlType": null
+            },
+            {
+                "PropertyName": "Data di Produzione",
+                "PropertyDescription": "Data di produzione del lotto",
+                "PropertyValueType": "T",
+                "PropertyValue": "2023-10-05",
+                "PropertyUnitOfMeasure": null,
+                "PropertyUrlType": null
+            }
+        ]
+    },
+    "Item": {
+        "ItemID": "ITEM789",
+        "ItemProperties": [
+            {
+                "PropertyName": "Peso del Capo",
+                "PropertyDescription": "Peso totale della giacca",
+                "PropertyValueType": "V",
+                "PropertyValue": 1.5,
+                "PropertyUnitOfMeasure": "kg",
+                "PropertyUrlType": null
+            }
+        ]
+    },
+    "ProductFamily": {
+        "ProductFamilyID": "PF101",
+        "ProductFamilyProperties": [
+            {
+                "PropertyName": "Categoria Prodotto",
+                "PropertyDescription": "Tipo generale del prodotto",
+                "PropertyValueType": "T",
+                "PropertyValue": "Giacca",
+                "PropertyUnitOfMeasure": null,
+                "PropertyUrlType": null
+            }
+        ]
+    },
+    "Company": {
+        "CompanyID": "COMP123",
+        "CompanyProperties": [
+            {
+                "PropertyName": "Certificazione GOTS",
+                "PropertyDescription": "Certificazione Global Organic Textile Standard",
+                "PropertyValueType": "U",
+                "PropertyValue": "https://azienda.com/certificato.pdf",
+                "PropertyUrlType": "PDF"
+            }
+        ]
+    }
+}

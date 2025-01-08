@@ -28,4 +28,4 @@
 	npm run dev
   ```
 2. **Access the app:**
-	Open your browser and navigate to  [http://localhost:3000](http://localhost:3000).
+	Open your browser and navigate to the address indicated by the command, something like: [http://localhost:5173/](http://localhost:5173/).
