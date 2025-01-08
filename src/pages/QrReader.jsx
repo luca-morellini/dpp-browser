@@ -2,7 +2,7 @@
 function QrReader() {
   return (
     <>
-      <h1>QR-reader</h1>
+      <h1>Add QR-reader here</h1>
     </>
   )
 }
