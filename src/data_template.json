@@ -1,0 +1,93 @@
+
+{
+    "summary": {
+        "batch_code": "C685",
+        "item_code": "MED000X-60620-XL",
+        "productfamily_code": "MED000X-60620",
+        "company_code": "StaffJersey"
+    },
+    "data": [
+        {
+            "language": "IT",
+            "ID": "UniqueId001",
+            "label": "Certificazione Aziendale",
+            "description": "Certificazione aziendale per la qualità",
+            "value_text": "ISO 9000",
+            "value_number": null,
+            "value_number_unit_of_measure": null,
+            "value_url": "azienda.com/certificato.pdf",
+            "value_url_type": "pdf"
+        },
+        {
+            "language": "IT",
+            "ID": "UniqueId002",
+            "label": "Un dato numerico",
+            "description": "Un dato numerico importante",
+            "value_text": null,
+            "value_number": 21.5,
+            "value_number_unit_of_measure": "L",
+            "value_url": null,
+            "value_url_type": null
+        },
+        {
+            "language": "IT",
+            "ID": "UniqueId003",
+            "label": "Un testo molto lungo",
+            "description": null,
+            "value_text": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis dignissimos voluptas, debitis optio, saepe vitae deserunt cupiditate nam explicabo alias quasi tenetur assumenda mollitia pariatur consequuntur natus quo minima doloribus.",
+            "value_number": null,
+            "value_number_unit_of_measure": null,
+            "value_url": null,
+            "value_url_type": null
+        }
+    ],
+    "forms": [
+        {
+            "form_language": "IT",
+            "form_name": "Certificazioni",
+            "fields": [
+                {
+                    "ID": "UniqueId002"
+                },
+                { 
+                    "ID": "UniqueId001"
+                }
+            ]
+        },
+        {
+            "form_language": "EN",
+            "form_name": "Technical Details",
+            "fields": [
+                { 
+                    "ID": "UniqueId003"
+                },
+                {
+                    "ID": "UniqueId004"
+                },
+                {
+                    "ID": "UniqueId005"
+                }
+            ]
+        }
+    ],
+    "linked_batches": [
+        {
+            "partner_code": "INTERFIL",
+            "partner_shortname": "INTERFIL",
+            "partner_uuid": "uuid0001",
+            "partner_webservice": "www.interfil.dppsoftware.com",
+            "productfamily_code": "Filato_9018",
+            "item_code": "Filato_9018_33",
+            "batch_code": "TS8938R2"
+        },
+        {
+            "partner_code": "StaffJersey",
+            "partner_shortname": "Reparto interno",
+            "partner_uuid": "uuid0002",
+            "partner_webservice": "www.staffjersey.dppsoftware.com",
+            "productfamily_code": "Famiglia_interna",
+            "item_code": "Item_interno",
+            "batch_code": "Lotto_interno"
+        }
+    ]
+}

@@ -6,6 +6,7 @@
   padding: 1rem 0;
   z-index: 999; /*It assure navbar is always on top*/
   font-size: 18px;
+  background-color: white
 }
 
 .navbar a:hover {
@@ -33,7 +34,31 @@
   margin-top: 60px;
   padding: 10px;
   text-align: center;
-  max-width: 400px;
+}
+
+.row .row:first-of-type .label {
+  border-top: 1px solid #989898;
+}
+
+.label {
+  background: #f1f1f1;
+  border-bottom: 1px solid #989898;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.row .row:first-of-type .value {
+  border-top: 1px solid #989898;
+}
+
+.value {
+  border-bottom: 1px solid #989898;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .prop-id {

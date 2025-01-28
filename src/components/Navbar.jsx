@@ -11,6 +11,9 @@ function Navbar() {
           <Link to="/qr-reader">QR-reader</Link>
         </li>
         <li>
+          <Link to="/dpp">Dpp</Link>
+        </li>
+        <li>
           <Link to="/contact">Contact</Link>
         </li>
       </ul>
