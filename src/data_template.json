@@ -49,7 +49,7 @@
                 {
                     "ID": "UniqueId002"
                 },
-                { 
+                {
                     "ID": "UniqueId001"
                 }
             ]
@@ -72,6 +72,8 @@
     ],
     "linked_batches": [
         {
+            "_comment": "item_name lo abbiamo aggiunto noi",
+            "item_name": "filato",
             "partner_code": "INTERFIL",
             "partner_shortname": "INTERFIL",
             "partner_uuid": "uuid0001",
@@ -81,6 +83,7 @@
             "batch_code": "TS8938R2"
         },
         {
+            "item_name": "filato",
             "partner_code": "StaffJersey",
             "partner_shortname": "Reparto interno",
             "partner_uuid": "uuid0002",

@@ -3,7 +3,7 @@ import Layout from './Layout';
 import Home from './pages/Home';
 import QrReader from './pages/QrReader';
 import Contact from './pages/Contact';
-import Dpp from './pages/DPP';
+import Dpp from './pages/Dpp';
 import 'bootstrap/dist/css/bootstrap.css';
 
 function App() {
