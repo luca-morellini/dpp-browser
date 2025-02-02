@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import json_data from "../data_template.json"
 import Form from "../components/Form";
 

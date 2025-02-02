@@ -39,6 +39,17 @@
             "value_number_unit_of_measure": null,
             "value_url": null,
             "value_url_type": null
+        },
+        {
+            "language": "IT",
+            "ID": "UniqueId004",
+            "label": "Un'immagine",
+            "description": null,
+            "value_text": null,
+            "value_number": null,
+            "value_number_unit_of_measure": null,
+            "value_url": "https://www.maglificiodiverona.it/img_prodotti/big/276.jpg",
+            "value_url_type": "image"
         }
     ],
     "forms": [
