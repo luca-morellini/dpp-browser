@@ -12,7 +12,7 @@ function Dpp() {
     setError(null);
 
     try {
-      const response = await fetch({api_url});
+      const response = await fetch(api_url);
       if (!response.ok) {
         throw new Error(`Errore nella richiesta: ${response.status}`);
       }
