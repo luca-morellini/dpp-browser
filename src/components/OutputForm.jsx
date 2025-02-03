@@ -23,7 +23,7 @@ function OutputForm({ form, data_list }) {
                     {item.value_url ? 
                       (item.value_url_type === "image" ? 
                         <img src={item.value_url} className="col-6"/> :
-                        <a href={item.value_url}>{item.value_text}</a> 
+                        <a href={item.value_url}>{item.value_text ? item.value_text : item.value_url}</a> 
                       ) :
                       <div>{item.value_text}{item.value_number} {item.value_number_unit_of_measure}</div>
                     }

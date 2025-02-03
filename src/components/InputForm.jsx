@@ -26,56 +26,30 @@ function InputForm({ fetchData }) {
   };
 
   return (
-    <section>
-      <form>
-        <div>
-          <input
-            type="text"
-            placeholder="Inserisci il codice lotto"
-            name="batch_code"
-            value={formData.batch_code}
-            onChange={handleFormChange}
-          />
+    <section className="col-12 offset-md-4 col-md-4 text-start">
+      <form >
+        <div class="form-group">
+          <label>Codice Lotto</label>
+          <input type="text" class="form-control" name="batch_code" placeholder="Inserisci il codice lotto" value={formData.batch_code} onChange={handleFormChange}/>
         </div>
-
-        <div>
-          <input
-            type="text"
-            placeholder="Inserisci il codice articolo"
-            name="item_code"
-            value={formData.item_code}
-            onChange={handleFormChange}
-          />
+        <div class="form-group">
+          <label>Codice Articolo</label>
+          <input type="text" class="form-control" placeholder="Inserisci il codice articolo" name="item_code" value={formData.item_code} onChange={handleFormChange}/>
         </div>
-        <div>
-          <input
-            type="text"
-            placeholder="Inserisci il codice famiglia prodotto"
-            name="productfamily_code"
-            value={formData.productfamily_code}
-            onChange={handleFormChange}
-          />
+        <div class="form-group">
+          <label>Codice Famiglia Articolo</label>
+          <input type="text" class="form-control" placeholder="Inserisci il codice famiglia prodotto" name="productfamily_code" value={formData.productfamily_code} onChange={handleFormChange}/>
         </div>
-        <div>
-          <input
-            type="text"
-            placeholder="Inserisci il codice azienda"
-            name="company_code"
-            value={formData.company_code}
-            onChange={handleFormChange}
-          />
+        <div class="form-group">
+          <label>Codice Azienda</label>
+          <input type="text" class="form-control" placeholder="Inserisci il codice azienda" name="company_code" value={formData.company_code} onChange={handleFormChange}/>
         </div>
-        <div>
-          <input
-            type="text"
-            placeholder="Inserisci l'url dell'azienda"
-            name="url"
-            value={formData.url}
-            onChange={handleFormChange}
-          />
+        <div class="form-group">
+          <label>URL</label>
+          <input type="text" class="form-control" placeholder="Inserisci l'url dell'azienda" name="url" value={formData.url} onChange={handleFormChange}/>
         </div>
       </form>
-      <button onClick={handleButtonClick}>Invia</button>
+      <button className="btn btn-primary" onClick={handleButtonClick}>Invia</button>
     </section>
   )
 }
