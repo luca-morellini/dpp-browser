@@ -17,7 +17,6 @@ function Dpp() {
         throw new Error(`Errore nella richiesta: ${response.status}`);
       }
       
-      const textData = await response.text();
       const jsonData = await response.json();
       setData(jsonData);
     } catch (err) {
