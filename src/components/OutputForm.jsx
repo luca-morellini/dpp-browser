@@ -1,5 +1,5 @@
 
-function Form({ form, data_list }) {
+function OutputForm({ form, data_list }) {
   const orderedData = form.fields.map(field => 
     data_list.find(item => item.ID === field.ID))
     .filter(item => item != undefined);
@@ -37,4 +37,4 @@ function Form({ form, data_list }) {
   )
 }
 
-export default Form;
+export default OutputForm;
