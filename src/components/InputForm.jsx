@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 
 function InputForm({ fetchData }) {
   const [formData, setFormData] = useState({
-    batch_code: '',
-    item_code: '',
-    productfamily_code: '',
-    company_code: '',
-    url: '',
+    batch_code: 'C685',
+    item_code: 'MED000X-60620-XL',
+    productfamily_code: 'MED000X-60620',
+    company_code: 'StaffJersey',
+    url: 'http://31.14.134.199:8000',
   });
 
   const handleFormChange = (event) => {
