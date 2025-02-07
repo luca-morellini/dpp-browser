@@ -26,7 +26,7 @@ function InputForm({ fetchData }) {
   };
 
   return (
-    <section className="col-12 offset-md-4 col-md-4 text-start">
+    <section className="text-start">
       <form >
         <div class="form-group">
           <label>Codice Lotto</label>

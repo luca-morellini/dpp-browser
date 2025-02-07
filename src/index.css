@@ -1,38 +1,5 @@
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  padding: 1rem 0;
-  z-index: 999; /*It assure navbar is always on top*/
-  font-size: 18px;
-  background-color: white
-}
-
-.navbar a:hover {
-  color: green;
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  margin: 0;
-  padding: 0;
-}
-
-.nav-links li {
-  margin-left: 20px;
-}
-
-.nav-links a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.main {
-  margin: 0 auto;
-  margin-top: 20px;
-  padding: 10px;
+.title {
+  padding: 20px;
   text-align: center;
 }
 
@@ -59,18 +26,4 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.prop-id {
-  margin: 0 auto;
-  margin-top: 20px;
-}
-
-.dropdown {
-  background-color: #ccc;
-  padding: 8px;
-}
-
-.dropdown-details {
-  margin-top: 10px;
 }

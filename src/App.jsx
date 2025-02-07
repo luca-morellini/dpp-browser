@@ -1,24 +1,46 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Layout from './Layout';
-import Home from './pages/Home';
-import QrReader from './pages/QrReader';
-import Contact from './pages/Contact';
-import Dpp from './pages/Dpp';
+import OutputForm from "./components/OutputForm";
+import InputForm from "./components/InputForm";
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 
 function App() {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const fetchData = async ({api_url}) => {
+    setLoading(true);
+    setError(null);
+
+    try {
+      const response = await fetch(api_url);
+      if (!response.ok) {
+        throw new Error(`Errore nella richiesta: ${response.status}`);
+      }
+      
+      const jsonData = await response.json();
+      setData(jsonData);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
-    <Router>
-      <Routes>
-        <Route element={<Layout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/qr-reader" element={<QrReader />} />
-          <Route path="/dpp" element={<Dpp />} />
-          <Route path="/contact" element={<Contact />} />
-        </Route>
-      </Routes>
-    </Router>
+    <div className="container">
+      <h1 className="title">Digital Product Passport</h1>
+
+      <InputForm fetchData={fetchData}/>
+
+      {error && <p style={{ color: 'red' }}>{error}</p>}
+
+      {loading && <p>Caricamento in corso...</p>}
+
+      {data && data.forms.map((form, index) => (
+        <OutputForm form={form} data_list={data.data} key={index}/>
+      ))}
+    </div>
   )
 }
 
