@@ -3,9 +3,9 @@ import InputForm from "./components/InputForm";
 import LinkedButton from "./components/LinkedButton";
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import data from './data_template.json';
 
 function App() {
+  const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
