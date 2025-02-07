@@ -1,10 +1,11 @@
 import OutputForm from "./components/OutputForm";
 import InputForm from "./components/InputForm";
+import LinkedButton from "./components/LinkedButton";
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
+import data from './data_template.json';
 
 function App() {
-  const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -39,6 +40,10 @@ function App() {
 
       {data && data.forms.map((form, index) => (
         <OutputForm form={form} data_list={data.data} key={index}/>
+      ))}
+
+      {data && data.linked_batches.map((linked_batch, index) => (
+        <LinkedButton fetchData={fetchData} linked_batch={linked_batch} key={index}/>
       ))}
     </div>
   )

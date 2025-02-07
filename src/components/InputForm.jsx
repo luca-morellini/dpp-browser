@@ -49,7 +49,7 @@ function InputForm({ fetchData }) {
           <input type="text" class="form-control" placeholder="Inserisci l'url dell'azienda" name="url" value={formData.url} onChange={handleFormChange}/>
         </div>
       </form>
-      <button className="btn btn-primary" onClick={handleButtonClick}>Invia</button>
+      <button className="mt-2 btn btn-primary" onClick={handleButtonClick}>Invia</button>
     </section>
   )
 }

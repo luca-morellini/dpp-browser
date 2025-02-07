@@ -9,7 +9,7 @@ function OutputForm({ form, data_list }) {
       <div className="row">
         {/*<div className="col-12 offset-md-3 col-md-6"> */}
         <div className="col-12">
-          <h2 className="mb-3 mt-5 text-start">{form.form_name}</h2>
+          <h2 className="mb-3 mt-4 text-start">{form.form_name}</h2>
 
           {orderedData.map((item, index) => (
             <div className="row" key={index}>
