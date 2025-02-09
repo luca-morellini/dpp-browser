@@ -1,11 +1,12 @@
 
 function LinkedButton( {fetchData, linked_batch} ) {
   const handleButtonClick = (e) => {
-    let api_url = `${linked_batch.partner_webservice}/browser-protocol/get_batch_details/${linked_batch.batch_code}/${linked_batch.item_code}/${linked_batch.productfamily_code}/${linked_batch.partner_code}/?format=json`;
-    if (!api_url.startsWith("http://")) {
-      api_url = `http://${api_url}`;
-    }
-    fetchData({api_url});
+    fetchData({url:linked_batch.partner_webservice,
+      batch_code:linked_batch.batch_code,
+      item_code:linked_batch.item_code,
+      productfamily_code:linked_batch.productfamily_code,
+      company_code:linked_batch.partner_code,
+      save_data:true});
   };
 
   return (

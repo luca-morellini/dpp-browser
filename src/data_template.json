@@ -85,13 +85,13 @@
         {
             "_comment": "item_name lo abbiamo aggiunto noi",
             "item_name": "filato",
-            "partner_code": "INTERFIL",
+            "partner_code": "StaffJersey",
             "partner_shortname": "INTERFIL",
             "partner_uuid": "uuid0001",
-            "partner_webservice": "www.interfil.dppsoftware.com",
-            "productfamily_code": "Filato_9018",
-            "item_code": "Filato_9018_33",
-            "batch_code": "TS8938R2"
+            "partner_webservice": "http://31.14.134.199:8000",
+            "productfamily_code": "MED000X-60620",
+            "item_code": "MED000X-60620-XL",
+            "batch_code": "C685"
         },
         {
             "item_name": "filato",
