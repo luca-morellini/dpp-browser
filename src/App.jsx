@@ -3,6 +3,7 @@ import InputForm from "./components/InputForm";
 import LinkedButton from "./components/LinkedButton";
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
+//import json_data from "./data_template.json"
 
 function App() {
   const [data, setData] = useState(null);
@@ -33,11 +34,22 @@ function App() {
     setData(new_data);
   };
 
-  const fetchData = async ({url, batch_code, item_code, productfamily_code, company_code, save_data=false}) => {
+  const getApiUrl = ({url, batch_code, item_code, productfamily_code, company_code}) => {
     let api_url = `${url}/browser-protocol/get_batch_details/${batch_code}/${item_code}/${productfamily_code}/${company_code}/?format=json`;
     if (!api_url.startsWith("http://")) {
       api_url = `http://${api_url}`;
     }
+    return api_url;
+  };
+
+  const fetchData = async ({api_url, save_data=false}) => {
+    if (!api_url.endsWith("/?format=json")) {
+      if (!api_url.endsWith("/")) {
+        api_url = `${api_url}/`;
+      }
+      api_url = `${api_url}?format=json`;
+    }
+
     setLoading(true);
     setError(null);
 
@@ -62,7 +74,7 @@ function App() {
     <div className="container">
       <h1 className="title">Digital Product Passport</h1>
 
-      <InputForm fetchData={fetchData}/>
+      <InputForm getApiUrl={getApiUrl} fetchData={fetchData}/>
 
       {error && <p style={{ color: 'red' }}>{error}</p>}
 
@@ -77,7 +89,7 @@ function App() {
       ))}
 
       {data && data.linked_batches.map((linked_batch, index) => (
-        <LinkedButton fetchData={fetchData} linked_batch={linked_batch} key={index}/>
+        <LinkedButton getApiUrl={getApiUrl} fetchData={fetchData} linked_batch={linked_batch} key={index}/>
       ))}
     </div> 
   )
