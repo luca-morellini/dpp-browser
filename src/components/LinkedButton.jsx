@@ -13,7 +13,7 @@ function LinkedButton( {getApiUrl, fetchData, linked_batch} ) {
 
   return (
     <section>
-      <button className="mt-4 btn btn-info" onClick={handleButtonClick}>{linked_batch.item_code}</button>
+      <button className="mb-2 mt-4 btn btn-info" onClick={handleButtonClick}>{linked_batch.item_code}</button>
     </section>
   )
 }

@@ -1,16 +1,20 @@
 
-function OutputForm({ form, data_list }) {
+function OutputForm({ form, data_list, lang }) {
   const orderedData = form.fields.map(field => 
     data_list.find(item => item.ID === field.ID))
     .filter(item => item != undefined);
+
+  const value_class_name_list = orderedData.map(e =>
+     e.language === lang ? 'value py-2' : 'value py-2 bg-warning');
+
+  const form_name_class = `mb-3 mt-4 text-start ${form.form_language === lang ? '' : 'bg-warning'}`;
 
   return (
     <section>
       <div className="row">
         {/*<div className="col-12 offset-md-3 col-md-6"> */}
         <div className="col-12">
-          <h2 className="mb-3 mt-4 text-start">{form.form_name}</h2>
-
+          <h2 className={form_name_class}>{form.form_name}</h2>
           {orderedData.map((item, index) => (
             <div className="row" key={index}>
               <div className="col-6 pe-0">
@@ -19,7 +23,7 @@ function OutputForm({ form, data_list }) {
                 </div>
               </div>
               <div className="col-6 ps-0">
-                  <div className="value py-2">
+                  <div className={value_class_name_list[index]}>
                     {item.value_url ? 
                       (item.value_url_type === "image" ? 
                         <img src={item.value_url} className="col-6"/> :

@@ -1,14 +1,15 @@
 import OutputForm from "./components/OutputForm";
 import InputForm from "./components/InputForm";
 import LinkedButton from "./components/LinkedButton";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import Select from 'react-flags-select';
+import translations from "./components/Translations.json";
 //import json_template from "./data_template.json"
 
 const languages = {
   IT: "IT",
-  GB: "UK",
+  GB: "EN",
   ES: "ES",
   FR: "FR",
 };
@@ -20,6 +21,11 @@ function App() {
   const [back_button_visible, setBackButtonVisible] = useState(false);
   const [list, setList] = useState([]);
   const [selectedCountry, setCountry] = useState('IT');
+  const [language, setLanguage] = useState('IT');
+
+  useEffect(() => {
+    setLanguage(languages[selectedCountry]);
+  }, [selectedCountry]);
 
   const pushElement = (new_element) => {
     if (new_element) {
@@ -44,7 +50,7 @@ function App() {
   };
 
   const getApiUrl = ({url, batch_code, item_code, productfamily_code, company_code}) => {
-    let api_url = `${url}/browser-protocol/get_batch_details/${batch_code}/${item_code}/${productfamily_code}/${company_code}/${languages[selectedCountry]}/?format=json`;
+    let api_url = `${url}/browser-protocol/get_batch_details/${batch_code}/${item_code}/${productfamily_code}/${company_code}/${language}/?format=json`;
     if (!api_url.startsWith("http://")) {
       api_url = `http://${api_url}`;
     }
@@ -82,26 +88,26 @@ function App() {
   return (
     <div className="container">
       <Select
-        className="mt-2 col-md-1"
+        className="mt-2 col-md-2"
         countries={["IT", "GB", "ES", "FR"]}
         customLabels={{ "IT": "Italiano", "GB": "English", "ES": "Español", "FR": "Français" }}
         onSelect={setCountry}
         selected={selectedCountry}
       />
-      <h1 className="title">Digital Product Passport</h1>
+      <h1 className="title">{translations[language].dpp_title_text}</h1>
 
-      <InputForm getApiUrl={getApiUrl} fetchData={fetchData}/>
+      <InputForm getApiUrl={getApiUrl} fetchData={fetchData} lang={language}/>
 
       {error && <p style={{ color: 'red' }}>{error}</p>}
 
-      {loading && <p>Caricamento in corso...</p>}
+      {loading && <p>{translations[language].loading_text}</p>}
 
       {back_button_visible && 
-        <button className="mt-2 btn btn-secondary" onClick={handleBackButtonClick}>Indietro</button>
+        <button className="mt-2 btn btn-secondary" onClick={handleBackButtonClick}>{translations[language].back_text}</button>
       }
 
       {data && data.forms.map((form, index) => (
-        <OutputForm form={form} data_list={data.data} key={index}/>
+        <OutputForm form={form} data_list={data.data} lang={language} key={index}/>
       ))}
 
       {data && data.linked_batches.map((linked_batch, index) => (

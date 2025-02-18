@@ -1,0 +1,50 @@
+{
+    "IT": {
+        "dpp_title_text": "Passaporto Digitale di Prodotto",
+        "qr_reader_text": "Lettore QR",
+        "manual_input_text": "Input Manuale",
+        "loading_text": "Caricamento in corso...",
+        "back_text": "Indietro",
+        "batch_code_text": "Codice Lotto",
+        "item_code_text": "Codice Articolo",
+        "productfamily_code_text": "Codice Famiglia Articolo",
+        "company_code_text": "Codice Azienda",
+        "send_text": "Invia"
+    },
+    "EN": {
+        "dpp_title_text": "Digital Product Passport",
+        "qr_reader_text": "QR Reader",
+        "manual_input_text": "Manual Input",
+        "loading_text": "Loading...",
+        "back_text": "Back",
+        "batch_code_text": "Batch Code",
+        "item_code_text": "Item Code",
+        "productfamily_code_text": "Product Family Code",
+        "company_code_text": "Company Code",
+        "send_text": "Send"
+    },
+    "ES": {
+        "dpp_title_text": "Pasaporte Digital del Producto",
+        "qr_reader_text": "Lector QR",
+        "manual_input_text": "Entrada Manual",
+        "loading_text": "Cargando...",
+        "back_text": "Atrás",
+        "batch_code_text": "Código de Lote",
+        "item_code_text": "Código de Artículo",
+        "productfamily_code_text": "Código de Familia de Producto",
+        "company_code_text": "Código de Empresa",
+        "send_text": "Enviar"
+    },
+    "FR": {
+        "dpp_title_text": "Passeport Produit Numérique",
+        "qr_reader_text": "Lecteur QR",
+        "manual_input_text": "Saisie Manuelle",
+        "loading_text": "Chargement en cours...",
+        "back_text": "Retour",
+        "batch_code_text": "Code de Lot",
+        "item_code_text": "Code d'Article",
+        "productfamily_code_text": "Code de Famille de Produits",
+        "company_code_text": "Code d'Entreprise",
+        "send_text": "Envoyer"
+    }
+}
