@@ -8,7 +8,7 @@ function LinkedButton( {getApiUrl, fetchData, linked_batch} ) {
       company_code:linked_batch.partner_code
     });
 
-    fetchData({ api_url:api_url, mnsave_data:true });
+    fetchData({ api_url:api_url, save_data:true });
   };
 
   return (

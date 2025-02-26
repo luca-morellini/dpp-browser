@@ -8,7 +8,7 @@ function InputForm({ getApiUrl, fetchData, lang }) {
     item_code: 'MED000X-60620-XL',
     productfamily_code: 'MED000X-60620',
     company_code: 'StaffJersey',
-    url: 'http://31.14.134.199:8000',
+    url: 'https://31.14.134.199:8000',
   });
   const [formVisible, setFormVisible] = useState(true);
   const [btnLabel, setBtnLabel] = useState(translations[lang].qr_reader_text);

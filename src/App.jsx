@@ -1,18 +1,11 @@
 import OutputForm from "./components/OutputForm";
 import InputForm from "./components/InputForm";
 import LinkedButton from "./components/LinkedButton";
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import Select from 'react-flags-select';
 import translations from "./components/Translations.json";
+import Header from "./components/Header";
 //import json_template from "./data_template.json"
-
-const languages = {
-  IT: "IT",
-  GB: "EN",
-  ES: "ES",
-  FR: "FR",
-};
 
 function App() {
   const [data, setData] = useState(null);
@@ -20,16 +13,11 @@ function App() {
   const [error, setError] = useState(null);
   const [back_button_visible, setBackButtonVisible] = useState(false);
   const [list, setList] = useState([]);
-  const [selectedCountry, setCountry] = useState('IT');
   const [language, setLanguage] = useState('IT');
-
-  useEffect(() => {
-    setLanguage(languages[selectedCountry]);
-  }, [selectedCountry]);
 
   const pushElement = (new_element) => {
     if (new_element) {
-      setQList([...list, new_element]);
+      setList([...list, new_element]);
       setBackButtonVisible(true);
     }
   };
@@ -87,13 +75,8 @@ function App() {
 
   return (
     <div className="container">
-      <Select
-        className="mt-2 col-md-2"
-        countries={["IT", "GB", "ES", "FR"]}
-        customLabels={{ "IT": "Italiano", "GB": "English", "ES": "Español", "FR": "Français" }}
-        onSelect={setCountry}
-        selected={selectedCountry}
-      />
+      <Header setLanguage={setLanguage}/>
+
       <h1 className="title">{translations[language].dpp_title_text}</h1>
 
       <InputForm getApiUrl={getApiUrl} fetchData={fetchData} lang={language}/>
