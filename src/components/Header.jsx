@@ -47,9 +47,13 @@ function Header({setLanguage}) {
   }, [selectedCountry]);
 
   function isTokenValid(token) {
-    const payload = JSON.parse(atob(token.split('.')[1])); //Token payload decode
-    const expiry = payload.exp * 1000; //Token expiry date in milliseconds
-    return Date.now() < expiry;
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1])); //Token payload decode
+      const expiry = payload.exp * 1000; //Token expiry date in milliseconds
+      return Date.now() < expiry;
+    } catch (error) {
+      return false;
+    }
   }
 
   useEffect(() => {
