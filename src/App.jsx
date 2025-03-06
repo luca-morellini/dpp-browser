@@ -1,7 +1,7 @@
 import OutputForm from "./components/OutputForm";
 import InputForm from "./components/InputForm";
-import LinkedButton from "./components/LinkedButton";
-import React, { useState } from 'react';
+import LinkedButton from "./components/LinkedCard";
+import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import translations from "./components/Translations.json";
 import Header from "./components/Header";
@@ -32,7 +32,7 @@ function App() {
     return null;
   };
 
-  const handleBackButtonClick = (e) => {
+  const handleBackButtonClick = () => {
     const new_data = popElement();
     setData(new_data);
   };
