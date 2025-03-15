@@ -1,9 +1,8 @@
 import { Html5QrcodeScanner } from "html5-qrcode";
 import { useEffect } from "react";
-import { useState } from "react";
+import PropTypes from 'prop-types';
 
 function Scanner({ fetchData }) {
-  const [scanResult, setScanResult] = useState(null);
 
   useEffect(() => {
     const scanner = new Html5QrcodeScanner('reader',{
@@ -29,7 +28,7 @@ function Scanner({ fetchData }) {
     function error(err){
       console.warn(err);
     }
-  }, []);
+  });
 
   return (
     <div>
@@ -37,5 +36,8 @@ function Scanner({ fetchData }) {
     </div>
   )
 }
+Scanner.propTypes = {
+  fetchData: PropTypes.func.isRequired,
+};
 
 export default Scanner;

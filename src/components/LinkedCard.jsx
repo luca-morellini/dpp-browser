@@ -1,6 +1,7 @@
+import PropTypes from 'prop-types';
 
 function LinkedCard( {getApiUrl, fetchData, linked_batch} ) {
-  const handleCardClick = (e) => {
+  const handleCardClick = () => {
     let api_url = getApiUrl({url:linked_batch.partner_webservice,
       batch_code:linked_batch.batch_code,
       item_code:linked_batch.item_code,
@@ -22,5 +23,19 @@ function LinkedCard( {getApiUrl, fetchData, linked_batch} ) {
     </section>
   )
 }
+LinkedCard.propTypes = {
+  getApiUrl: PropTypes.func.isRequired,
+  fetchData: PropTypes.func.isRequired,
+  linked_batch: PropTypes.shape({
+    partner_webservice: PropTypes.string.isRequired,
+    batch_code: PropTypes.string.isRequired,
+    item_code: PropTypes.string.isRequired,
+    productfamily_code: PropTypes.string.isRequired,
+    partner_code: PropTypes.string.isRequired,
+    batch_qty: PropTypes.number,
+    batch_qty_unit_of_measure: PropTypes.string.isRequired,
+  }),
+};
+
 
 export default LinkedCard;

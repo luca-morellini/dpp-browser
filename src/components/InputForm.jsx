@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Scanner from './Scanner';
 import translations from "./Translations.json";
+import PropTypes from 'prop-types';
 
 function InputForm({ getApiUrl, fetchData, lang }) {
   const [formData, setFormData] = useState({
@@ -22,7 +23,7 @@ function InputForm({ getApiUrl, fetchData, lang }) {
     }
   }, [lang, formVisible]);
 
-  const handleShowButtonClick = (e) => {
+  const handleShowButtonClick = () => {
     setFormVisible(!formVisible);
   };
 
@@ -34,7 +35,7 @@ function InputForm({ getApiUrl, fetchData, lang }) {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleEnterButtonClick = (e) => {
+  const handleEnterButtonClick = () => {
     let api_url = getApiUrl({url:formData.url,
       batch_code:formData.batch_code,
       item_code:formData.item_code,
@@ -79,5 +80,10 @@ function InputForm({ getApiUrl, fetchData, lang }) {
     </section>
   )
 }
+InputForm.propTypes = {
+  getApiUrl: PropTypes.func.isRequired,
+  fetchData: PropTypes.func.isRequired,
+  lang: PropTypes.string.isRequired,
+};
 
 export default InputForm;

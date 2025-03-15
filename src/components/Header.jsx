@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import Select from 'react-flags-select';
 import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
-import { jwtDecode } from "jwt-decode";
 
 const languages = {
   IT: "IT",
@@ -27,7 +26,17 @@ function getCookie(name) {
   return "";
 }
 
-function Header({ setLanguage }) {
+function decodeJwtResponse(token) {
+  var base64Url = token.split('.')[1];
+  var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+  var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function (c) {
+      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+  }).join(''));
+
+  return JSON.parse(jsonPayload);
+};
+
+function Header({setLanguage}) {
   const [selectedCountry, setCountry] = useState('IT');
   const [jwtToken, setJwtToken] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -41,8 +50,8 @@ function Header({ setLanguage }) {
     const token = getCookie("jwtToken");
     if (token) {
       try {
-        const userObject = jwtDecode(token);
-        if ((Date.now() / 1000) < userObject.exp) {
+        const userObject = decodeJwtResponse(token);
+        if (Date.now() < userObject.exp) {
           setJwtToken(token);
           setIsLoggedIn(true);
           setUserProfile(userObject);
@@ -58,7 +67,7 @@ function Header({ setLanguage }) {
 
   const onLoginSuccess = (response) => {
     setIsLoggedIn(true);
-    const userObject = jwtDecode(response.credential);
+    const userObject = decodeJwtResponse(response.credential);
     setUserProfile(userObject);
     document.cookie = `jwtToken=${response.credential}; max-age=172800; secure; SameSite=Strict`;
     setJwtToken(response.credential);

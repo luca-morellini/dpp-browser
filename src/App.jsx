@@ -5,7 +5,9 @@ import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import translations from "./components/Translations.json";
 import Header from "./components/Header";
+//import CompareForms from "./components/CompareForms";
 //import json_template from "./data_template.json"
+//import json_template2 from "./data_template2.json"
 
 function App() {
   const [data, setData] = useState(null);
@@ -92,6 +94,8 @@ function App() {
       {data && data.forms.map((form, index) => (
         <OutputForm form={form} data_list={data.data} lang={language} key={index}/>
       ))}
+
+      {/*<CompareForms data1={json_template} data2={json_template2}/>*/}
 
       {data && data.linked_batches.map((linked_batch, index) => (
         <LinkedButton getApiUrl={getApiUrl} fetchData={fetchData} linked_batch={linked_batch} key={index}/>

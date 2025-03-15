@@ -1,107 +1,226 @@
-
 {
     "summary": {
-        "batch_code": "C685",
-        "item_code": "MED000X-60620-XL",
-        "productfamily_code": "MED000X-60620",
-        "company_code": "StaffJersey"
+      "company_code": "StaffJersey",
+      "company_uuid": "uuidStaffJersey",
+      "company_webservice": "wwwStaffJersey",
+      "company_shortname": "Staff Jersey",
+      "company_legalname": "Staff Jersey srl",
+      "company_vat": "",
+      "company_address": "",
+      "company_email": "",
+      "company_phonenumber": "",
+      "company_website": "",
+      "company_note": "",
+      "productfamily_code": "MED000X-60620",
+      "productfamily_name": "MED000X-60620",
+      "productfamily_description": "Camice Alta Perform. 040300B 100% PL AZZURRO",
+      "productfamily_uom": "Qta'",
+      "item_code": "MED000X-60620-XL",
+      "item_name": "MED000X 60620 XL",
+      "item_description": "Camice Alta Perform. 040300B 100% PL VERDE Taglia XL",
+      "batch_code": "C685",
+      "language": "it"
     },
     "data": [
-        {
-            "language": "IT",
-            "ID": "UniqueId001",
-            "label": "Certificazione Aziendale",
-            "description": "Certificazione aziendale per la qualità",
-            "value_text": "ISO 9000",
-            "value_number": null,
-            "value_number_unit_of_measure": null,
-            "value_url": "azienda.com/certificato.pdf",
-            "value_url_type": "pdf"
-        },
-        {
-            "language": "IT",
-            "ID": "UniqueId002",
-            "label": "Un dato numerico",
-            "description": "Un dato numerico importante",
-            "value_text": null,
-            "value_number": 21.5,
-            "value_number_unit_of_measure": "L",
-            "value_url": null,
-            "value_url_type": null
-        },
-        {
-            "language": "IT",
-            "ID": "UniqueId003",
-            "label": "Un testo molto lungo",
-            "description": null,
-            "value_text": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis dignissimos voluptas, debitis optio, saepe vitae deserunt cupiditate nam explicabo alias quasi tenetur assumenda mollitia pariatur consequuntur natus quo minima doloribus.",
-            "value_number": null,
-            "value_number_unit_of_measure": null,
-            "value_url": null,
-            "value_url_type": null
-        },
-        {
-            "language": "IT",
-            "ID": "UniqueId004",
-            "label": "Un'immagine",
-            "description": null,
-            "value_text": null,
-            "value_number": null,
-            "value_number_unit_of_measure": null,
-            "value_url": "https://www.maglificiodiverona.it/img_prodotti/big/276.jpg",
-            "value_url_type": "image"
-        }
+      {
+        "language": "it",
+        "ID": "ItemName",
+        "label": "Articolo",
+        "description": null,
+        "value_text": "MED000X 60620 XL",
+        "value_number": null,
+        "value_number_unit_of_measure": null,
+        "value_url": null,
+        "value_url_type": null
+      },
+      {
+        "language": "it",
+        "ID": "ItemDescription",
+        "label": "Descrizione",
+        "description": null,
+        "value_text": "Camice Alta Perform. 040300B 100% PL VERDE Taglia XL",
+        "value_number": null,
+        "value_number_unit_of_measure": null,
+        "value_url": null,
+        "value_url_type": null
+      },
+      {
+        "language": "it",
+        "ID": "ProductFamilyName",
+        "label": "Famiglia Prodotto",
+        "description": null,
+        "value_text": "MED000X-60620",
+        "value_number": null,
+        "value_number_unit_of_measure": null,
+        "value_url": null,
+        "value_url_type": null
+      },
+      {
+        "language": "it",
+        "ID": "ProductFamilyDescription",
+        "label": "Descrizione",
+        "description": null,
+        "value_text": "Camice Alta Perform. 040300B 100% PL AZZURRO",
+        "value_number": null,
+        "value_number_unit_of_measure": null,
+        "value_url": null,
+        "value_url_type": null
+      },
+      {
+        "language": "it",
+        "ID": "ProductFamilyUoM",
+        "label": "Unità di Misura",
+        "description": null,
+        "value_text": "Qta'",
+        "value_number": null,
+        "value_number_unit_of_measure": null,
+        "value_url": null,
+        "value_url_type": null
+      },
+      {
+        "language": "it",
+        "ID": "CONS_ACQUA",
+        "label": "Consumo Acqua",
+        "description": "Quantità di acqua consumata per la produzione.",
+        "value_type": "Value",
+        "property_language": "it",
+        "value_text": null,
+        "value_number": 50,
+        "value_number_unit_of_measure": "litri",
+        "value_url": null,
+        "value_url_type": null
+      },
+      {
+        "language": "it",
+        "ID": "CERT_MATERIALI",
+        "label": "Certificazione GOTS",
+        "description": "Certificazione dei materiali relativi a questa famiglia",
+        "value_type": "URL",
+        "property_language": "it",
+        "value_text": null,
+        "value_number": null,
+        "value_number_unit_of_measure": null,
+        "value_url": "https://sitoazienda.com/certificazione-materiali.pdf",
+        "value_url_type": "P"
+      },
+      {
+        "language": "it",
+        "ID": "CERT_AZIENDALE",
+        "label": "Certificazione aziendale",
+        "description": "Certificazione qualità aziendale",
+        "value_type": "String",
+        "property_language": "it",
+        "value_text": "ISO 9000",
+        "value_number": null,
+        "value_number_unit_of_measure": null,
+        "value_url": null,
+        "value_url_type": null
+      },
+      {
+        "language": "it",
+        "ID": "CONS_ENERGIA",
+        "label": "Consumo energia elettrica",
+        "description": "Quantità di energia elettrica consumata per la produzione.",
+        "value_type": "Value",
+        "property_language": "it",
+        "value_text": null,
+        "value_number": 45,
+        "value_number_unit_of_measure": "kWh",
+        "value_url": null,
+        "value_url_type": null
+      },
+      {
+        "language": "it",
+        "ID": "CONS_ACQUA",
+        "label": "Consumo Acqua",
+        "description": "Quantità di acqua consumata per la produzione.",
+        "value_type": "Value",
+        "property_language": "it",
+        "value_text": null,
+        "value_number": 50,
+        "value_number_unit_of_measure": "litri",
+        "value_url": null,
+        "value_url_type": null
+      },
+      {
+        "language": "it",
+        "ID": "CERT_MATERIALI",
+        "label": "Certificazione GOTS",
+        "description": "Certificazione dei materiali relativi a questa famiglia",
+        "value_type": "URL",
+        "property_language": "it",
+        "value_text": null,
+        "value_number": null,
+        "value_number_unit_of_measure": null,
+        "value_url": "https://sitoazienda.com/certificazione-materiali.pdf",
+        "value_url_type": "P"
+      },
+      {
+        "language": "it",
+        "ID": "CERT_AZIENDALE",
+        "label": "Certificazione aziendale",
+        "description": "Certificazione qualità aziendale",
+        "value_type": "String",
+        "property_language": "it",
+        "value_text": "ISO 9000",
+        "value_number": null,
+        "value_number_unit_of_measure": null,
+        "value_url": null,
+        "value_url_type": null
+      }
     ],
     "forms": [
-        {
-            "form_language": "IT",
-            "form_name": "Certificazioni",
-            "fields": [
-                {
-                    "ID": "UniqueId002"
-                },
-                {
-                    "ID": "UniqueId001"
-                }
-            ]
-        },
-        {
-            "form_language": "EN",
-            "form_name": "Technical Details",
-            "fields": [
-                { 
-                    "ID": "UniqueId003"
-                },
-                {
-                    "ID": "UniqueId004"
-                },
-                {
-                    "ID": "UniqueId005"
-                }
-            ]
-        }
+      {
+        "form_language": "it",
+        "form_name": "Consumi",
+        "fields": [
+          {
+            "ID": "CONS_ENERGIA"
+          },
+          {
+            "ID": "CONS_ACQUA"
+          }
+        ]
+      },
+      {
+        "form_language": "it",
+        "form_name": "Certificazioni",
+        "fields": [
+          {
+            "ID": "CERT_AZIENDALE"
+          },
+          {
+            "ID": "CERT_MATERIALI"
+          },
+          {
+            "ID": "CONS_ACQUA"
+          }
+        ]
+      },
+      {
+        "form_language": "it",
+        "form_name": "Extra",
+        "fields": [
+          {
+            "ID": "CERT_AZIENDALE"
+          },
+          {
+            "ID": "CERT_MATERIALI"
+          }
+        ]
+      }
     ],
     "linked_batches": [
-        {
-            "_comment": "item_name lo abbiamo aggiunto noi",
-            "item_name": "filato",
-            "partner_code": "StaffJersey",
-            "partner_shortname": "INTERFIL",
-            "partner_uuid": "uuid0001",
-            "partner_webservice": "http://31.14.134.199:8000",
-            "productfamily_code": "MED000X-60620",
-            "item_code": "MED000X-60620-XL",
-            "batch_code": "C685"
-        },
-        {
-            "item_name": "filato",
-            "partner_code": "StaffJersey",
-            "partner_shortname": "Reparto interno",
-            "partner_uuid": "uuid0002",
-            "partner_webservice": "www.staffjersey.dppsoftware.com",
-            "productfamily_code": "Famiglia_interna",
-            "item_code": "Item_interno",
-            "batch_code": "Lotto_interno"
-        }
+      {
+        "company_code": "INTERFIL",
+        "company_shortname": "INTERFIL",
+        "company_uuid": "a4c62c25-9bd1-4746-add8-10a6d1888fc2",
+        "company_webservice": "",
+        "productfamily_code": null,
+        "item_code": null,
+        "batch_code": null,
+        "batch_qty": 5000,
+        "batch_qty_unit_of_measure": "KG"
+      }
     ]
 }

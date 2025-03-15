@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 
 function OutputForm({ form, data_list, lang }) {
   const orderedData = form.fields.map(field => 
@@ -40,5 +41,10 @@ function OutputForm({ form, data_list, lang }) {
     </section>
   )
 }
+OutputForm.propTypes = {
+  form: PropTypes.array.isRequired,
+  lang: PropTypes.string.isRequired,
+  data_list: PropTypes.array.isRequired,
+};
 
 export default OutputForm;
