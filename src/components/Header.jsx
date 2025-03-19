@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import Select from 'react-flags-select';
 import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
+import PropTypes from 'prop-types';
+import {isTokenValid, getCookie, decodeJwtResponse} from '../utilities.jsx'
 
 const languages = {
   IT: "IT",
@@ -9,54 +11,26 @@ const languages = {
   FR: "FR",
 };
 
-function getCookie(name) {
-  const cookieName = name + "=";
-  const decodedCookie = decodeURIComponent(document.cookie);
-  const cookieArray = decodedCookie.split(';');
- 
-  for (let i = 0; i < cookieArray.length; i++) {
-    let cookie = cookieArray[i];
-    while (cookie.charAt(0) === ' ') {
-      cookie = cookie.substring(1);
-    }
-    if (cookie.indexOf(cookieName) === 0) {
-      return cookie.substring(cookieName.length, cookie.length);
-    }
-  }
-  return "";
-}
-
-function decodeJwtResponse(token) {
-  var base64Url = token.split('.')[1];
-  var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-  var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function (c) {
-      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-  }).join(''));
-
-  return JSON.parse(jsonPayload);
-};
-
-function Header({setLanguage}) {
+function Header( {setLanguage} ) {
   const [selectedCountry, setCountry] = useState('IT');
-  const [jwtToken, setJwtToken] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userProfile, setUserProfile] = useState(null);
 
   useEffect(() => {
     setLanguage(languages[selectedCountry]);
-  }, [selectedCountry]);
+  }, [selectedCountry, setLanguage]);
 
   useEffect(() => {
     const token = getCookie("jwtToken");
     if (token) {
       try {
-        const userObject = decodeJwtResponse(token);
-        if (Date.now() < userObject.exp) {
-          setJwtToken(token);
+        const decodedToken = decodeJwtResponse(token);
+        if (isTokenValid(decodedToken)) {
           setIsLoggedIn(true);
-          setUserProfile(userObject);
+          setUserProfile(decodedToken);
         }
       } catch (error) {
+        console.log(error);
         setIsLoggedIn(false);
       }
     }
@@ -70,7 +44,6 @@ function Header({setLanguage}) {
     const userObject = decodeJwtResponse(response.credential);
     setUserProfile(userObject);
     document.cookie = `jwtToken=${response.credential}; max-age=172800; secure; SameSite=Strict`;
-    setJwtToken(response.credential);
     console.log(response.credential);
   };
   
@@ -82,7 +55,6 @@ function Header({setLanguage}) {
     setIsLoggedIn(false);
     setUserProfile(null);
     document.cookie = `jwtToken=${null};`;
-    setJwtToken(null);
   }
 
   const clientId = "28880670233-rfbhtbqpefv7mqpdikeevvmgg3mrg7gv.apps.googleusercontent.com"
@@ -127,6 +99,8 @@ function Header({setLanguage}) {
     </section>
   );
 }
-
+Header.propTypes = {
+  setLanguage: PropTypes.func.isRequired,
+};
 
 export default Header;

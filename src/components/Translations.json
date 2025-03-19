@@ -9,7 +9,8 @@
         "item_code_text": "Codice Articolo",
         "productfamily_code_text": "Codice Famiglia Articolo",
         "company_code_text": "Codice Azienda",
-        "send_text": "Invia"
+        "send_text": "Invia",
+        "compare_text": "Confronta"
     },
     "EN": {
         "dpp_title_text": "Digital Product Passport",
@@ -21,7 +22,8 @@
         "item_code_text": "Item Code",
         "productfamily_code_text": "Product Family Code",
         "company_code_text": "Company Code",
-        "send_text": "Send"
+        "send_text": "Send",
+        "compare_text": "Compare"
     },
     "ES": {
         "dpp_title_text": "Pasaporte Digital del Producto",
@@ -33,7 +35,8 @@
         "item_code_text": "Código de Artículo",
         "productfamily_code_text": "Código de Familia de Producto",
         "company_code_text": "Código de Empresa",
-        "send_text": "Enviar"
+        "send_text": "Enviar",
+        "compare_text": "Comparar"
     },
     "FR": {
         "dpp_title_text": "Passeport Produit Numérique",
@@ -45,6 +48,7 @@
         "item_code_text": "Code d'Article",
         "productfamily_code_text": "Code de Famille de Produits",
         "company_code_text": "Code d'Entreprise",
-        "send_text": "Envoyer"
+        "send_text": "Envoyer",
+        "compare_text": "Comparer"
     }
 }

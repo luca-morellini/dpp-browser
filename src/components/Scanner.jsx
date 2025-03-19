@@ -16,8 +16,6 @@ function Scanner({ fetchData }) {
     scanner.render(success, error);
   
     function success(result) {
-      //setScanResult(result);
-      //console.log(scanResult);
       if (result) {
         fetchData({api_url:result});
       }

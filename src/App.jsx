@@ -5,30 +5,43 @@ import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import translations from "./components/Translations.json";
 import Header from "./components/Header";
-//import CompareForms from "./components/CompareForms";
+import CompareForms from "./components/CompareForms";
 //import json_template from "./data_template.json"
 //import json_template2 from "./data_template2.json"
+import BottomBar from "./components/BottomBar";
+import {isTokenValid, getCookie, decodeJwtResponse} from './utilities.jsx'
 
 function App() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [back_button_visible, setBackButtonVisible] = useState(false);
-  const [list, setList] = useState([]);
+  const [parent_list, setParentList] = useState([]);
   const [language, setLanguage] = useState('IT');
+  const [compare_list, setCompareList] = useState([]);
+
+  const addCompareElement = (element) => {
+    if (compare_list.length < 2) {
+      setCompareList([...compare_list, element]);
+    }
+  };
+
+  const removeCompareElement = (indexToRemove) => {
+    setCompareList(compare_list.filter((_, index) => index !== indexToRemove));
+  };
 
   const pushElement = (new_element) => {
     if (new_element) {
-      setList([...list, new_element]);
+      setParentList([...parent_list, new_element]);
       setBackButtonVisible(true);
     }
   };
 
   const popElement = () => {
-    if (list.length > 0) {
-      const element = list.shift();
-      setList([...list]);
-      setBackButtonVisible(list.length > 0);
+    if (parent_list.length > 0) {
+      const element = parent_list.shift();
+      setParentList([...parent_list]);
+      setBackButtonVisible(parent_list.length > 0);
       return element;
     }
     return null;
@@ -58,8 +71,29 @@ function App() {
     setLoading(true);
     setError(null);
 
+    var token = getCookie("jwtToken");
+    if (token) {
+      try {
+        const decodedToken = decodeJwtResponse(token);
+        if (!isTokenValid(decodedToken)) {
+          token = null;
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    else {
+      token = null;
+    }
+
     try {
-      const response = await fetch(api_url);
+      const response = await fetch(api_url, {
+        method: 'GET', // o POST, PUT, DELETE, ecc.
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json' // Se invii dati JSON
+        }
+      });
       if (!response.ok) {
         throw new Error(`Errore nella richiesta: ${response.status}`);
       }
@@ -76,31 +110,38 @@ function App() {
   };
 
   return (
-    <div className="container">
-      <Header setLanguage={setLanguage}/>
+    <div>
+      <div className="container">
+        <Header setLanguage={setLanguage}/>
 
-      <h1 className="title">{translations[language].dpp_title_text}</h1>
+        <h1 className="title">{translations[language].dpp_title_text}</h1>
 
-      <InputForm getApiUrl={getApiUrl} fetchData={fetchData} lang={language}/>
+        <InputForm getApiUrl={getApiUrl} fetchData={fetchData} lang={language}/>
 
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+        {error && <p style={{ color: 'red' }}>{error}</p>}
 
-      {loading && <p>{translations[language].loading_text}</p>}
+        {loading && <p>{translations[language].loading_text}</p>}
 
-      {back_button_visible && 
-        <button className="mt-2 btn btn-secondary" onClick={handleBackButtonClick}>{translations[language].back_text}</button>
-      }
+        {back_button_visible && 
+          <button className="mt-2 btn btn-secondary" onClick={handleBackButtonClick}>{translations[language].back_text}</button>
+        }
 
-      {data && data.forms.map((form, index) => (
-        <OutputForm form={form} data_list={data.data} lang={language} key={index}/>
-      ))}
+        {data && data.forms.map((form, index) => (
+          <OutputForm form={form} data_list={data.data} lang={language} key={index}/>
+        ))}
 
-      {/*<CompareForms data1={json_template} data2={json_template2}/>*/}
+        {data && <button className="btn btn-primary mt-2" onClick={() => addCompareElement(data)}>{translations[language].compare_text}</button>}
 
-      {data && data.linked_batches.map((linked_batch, index) => (
-        <LinkedButton getApiUrl={getApiUrl} fetchData={fetchData} linked_batch={linked_batch} key={index}/>
-      ))}
-    </div> 
+        {/*<CompareForms data1={json_template} data2={json_template2}/>*/}
+
+        {data && data.linked_batches.map((linked_batch, index) => (
+          <LinkedButton getApiUrl={getApiUrl} fetchData={fetchData} linked_batch={linked_batch} key={index}/>
+        ))}
+      </div>
+      <div className="p-4" style={{ height: '60px' }}>
+        {(compare_list.length > 0) && <BottomBar items={compare_list} removeItem = {removeCompareElement}/>}
+      </div>
+    </div>
   )
 }
 
