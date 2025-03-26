@@ -6,14 +6,14 @@ import 'bootstrap/dist/css/bootstrap.css';
 import translations from "./components/Translations.json";
 import Header from "./components/Header";
 import CompareForms from "./components/CompareForms";
-import json_template from "./data_template.json"
+//import json_template from "./data_template.json"
 //import json_template2 from "./data_template2.json"
 import BottomBar from "./components/BottomBar";
 import {isTokenValid, getCookie} from './utilities.jsx'
 import { jwtDecode } from "jwt-decode";
 
 function App() {
-  const [data, setData] = useState(json_template);
+  const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [back_button_visible, setBackButtonVisible] = useState(false);
