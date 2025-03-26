@@ -14,7 +14,7 @@ function LinkedCard( {getApiUrl, fetchData, linked_batch} ) {
 
   return (
     <section>
-      <div className="card cursor-pointer mt-2 mb-2" onClick={handleCardClick}>
+      <div className="card col-2 mt-2 mb-2" role="button" onClick={handleCardClick}>
         <div className="card-body">
           <h5 className="card-title">{linked_batch.item_code}</h5>
           <p className="card-text">{linked_batch.batch_qty} {linked_batch.batch_qty_unit_of_measure}</p>

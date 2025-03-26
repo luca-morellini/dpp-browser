@@ -1,24 +1,26 @@
 import OutputForm from "./components/OutputForm";
 import InputForm from "./components/InputForm";
-import LinkedButton from "./components/LinkedCard";
+import LinkedCard from "./components/LinkedCard.jsx";
 import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import translations from "./components/Translations.json";
 import Header from "./components/Header";
 import CompareForms from "./components/CompareForms";
-//import json_template from "./data_template.json"
+import json_template from "./data_template.json"
 //import json_template2 from "./data_template2.json"
 import BottomBar from "./components/BottomBar";
-import {isTokenValid, getCookie, decodeJwtResponse} from './utilities.jsx'
+import {isTokenValid, getCookie} from './utilities.jsx'
+import { jwtDecode } from "jwt-decode";
 
 function App() {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState(json_template);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [back_button_visible, setBackButtonVisible] = useState(false);
   const [parent_list, setParentList] = useState([]);
   const [language, setLanguage] = useState('IT');
   const [compare_list, setCompareList] = useState([]);
+  const [show_compare, setShowCompare] = useState(false);
 
   const addCompareElement = (element) => {
     if (compare_list.length < 2) {
@@ -74,7 +76,7 @@ function App() {
     var token = getCookie("jwtToken");
     if (token) {
       try {
-        const decodedToken = decodeJwtResponse(token);
+        const decodedToken = jwtDecode(token);
         if (!isTokenValid(decodedToken)) {
           token = null;
         }
@@ -88,10 +90,10 @@ function App() {
 
     try {
       const response = await fetch(api_url, {
-        method: 'GET', // o POST, PUT, DELETE, ecc.
+        method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json' // Se invii dati JSON
+          'Content-Type': 'application/json'
         }
       });
       if (!response.ok) {
@@ -110,36 +112,39 @@ function App() {
   };
 
   return (
-    <div>
-      <div className="container">
-        <Header setLanguage={setLanguage}/>
+    <div className="container">
+      <Header setLanguage={setLanguage}/>
+      
+      <h1 className="title">{translations[language].dpp_title_text}</h1>
 
-        <h1 className="title">{translations[language].dpp_title_text}</h1>
-
-        <InputForm getApiUrl={getApiUrl} fetchData={fetchData} lang={language}/>
-
-        {error && <p style={{ color: 'red' }}>{error}</p>}
-
-        {loading && <p>{translations[language].loading_text}</p>}
-
-        {back_button_visible && 
-          <button className="mt-2 btn btn-secondary" onClick={handleBackButtonClick}>{translations[language].back_text}</button>
-        }
-
-        {data && data.forms.map((form, index) => (
-          <OutputForm form={form} data_list={data.data} lang={language} key={index}/>
-        ))}
-
-        {data && <button className="btn btn-primary mt-2" onClick={() => addCompareElement(data)}>{translations[language].compare_text}</button>}
-
-        {/*<CompareForms data1={json_template} data2={json_template2}/>*/}
-
-        {data && data.linked_batches.map((linked_batch, index) => (
-          <LinkedButton getApiUrl={getApiUrl} fetchData={fetchData} linked_batch={linked_batch} key={index}/>
-        ))}
-      </div>
+      {show_compare
+        ? <CompareForms data1={compare_list[0]} data2={compare_list[1]} setShowCompare={setShowCompare} language={language}/>
+        : <div>
+            <div>
+              <InputForm getApiUrl={getApiUrl} fetchData={fetchData} lang={language}/>
+      
+              {error && <p style={{ color: 'red' }}>{error}</p>}
+      
+              {loading && <p>{translations[language].loading_text}</p>}
+      
+              {back_button_visible && 
+                <button className="mt-2 btn btn-secondary" onClick={handleBackButtonClick}>{translations[language].back_text}</button>
+              }
+      
+              {data && data.forms.map((form, index) => (
+                <OutputForm form={form} data_list={data.data} lang={language} key={index}/>
+              ))}
+      
+              {data && <button className="btn btn-primary mt-2" onClick={() => addCompareElement(data)}>{translations[language].compare_text}</button>}
+      
+              {data && data.linked_batches.map((linked_batch, index) => (
+                <LinkedCard getApiUrl={getApiUrl} fetchData={fetchData} linked_batch={linked_batch} key={index}/>
+              ))}
+            </div>
+          </div>
+      }
       <div className="p-4" style={{ height: '60px' }}>
-        {(compare_list.length > 0) && <BottomBar items={compare_list} removeItem = {removeCompareElement}/>}
+        {(compare_list.length > 0) && <BottomBar items={compare_list} removeItem={removeCompareElement} setShowCompare={setShowCompare} language={language}/>}
       </div>
     </div>
   )

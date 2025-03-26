@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import Select from 'react-flags-select';
 import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
 import PropTypes from 'prop-types';
-import {isTokenValid, getCookie, decodeJwtResponse} from '../utilities.jsx'
+import {isTokenValid, getCookie} from '../utilities.jsx'
+import { jwtDecode } from "jwt-decode";
 
 const languages = {
   IT: "IT",
@@ -24,7 +25,7 @@ function Header( {setLanguage} ) {
     const token = getCookie("jwtToken");
     if (token) {
       try {
-        const decodedToken = decodeJwtResponse(token);
+        const decodedToken = jwtDecode(token);
         if (isTokenValid(decodedToken)) {
           setIsLoggedIn(true);
           setUserProfile(decodedToken);
@@ -41,7 +42,7 @@ function Header( {setLanguage} ) {
 
   const onLoginSuccess = (response) => {
     setIsLoggedIn(true);
-    const userObject = decodeJwtResponse(response.credential);
+    const userObject = jwtDecode(response.credential);
     setUserProfile(userObject);
     document.cookie = `jwtToken=${response.credential}; max-age=172800; secure; SameSite=Strict`;
     console.log(response.credential);

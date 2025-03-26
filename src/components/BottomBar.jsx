@@ -1,7 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import PropTypes from 'prop-types';
+import translations from "./Translations.json";
 
-function BottomBar({ items, removeItem }) {
+function BottomBar({ items, removeItem, setShowCompare, language }) {
   return (
     <div
       style={{
@@ -28,8 +29,6 @@ function BottomBar({ items, removeItem }) {
             padding: '5px 10px',
             marginRight: '10px',
             position: 'relative',
-            display: 'inline-flex',
-            alignItems: 'center',
           }}
         >
           {item.summary.item_name}
@@ -50,12 +49,17 @@ function BottomBar({ items, removeItem }) {
           </button>
         </div>
       ))}
+      <button className='btn btn-primary' onClick={() => setShowCompare(true)}>
+        {translations[language].compare_text}
+      </button>
     </div>
   );
 }
 BottomBar.propTypes = {
   items: PropTypes.array.isRequired,
   removeItem: PropTypes.func.isRequired,
+  setShowCompare: PropTypes.func.isRequired,
+  language: PropTypes.string.isRequired,
 };
 
 export default BottomBar;

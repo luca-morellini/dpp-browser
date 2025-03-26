@@ -191,21 +191,6 @@
           },
           {
             "ID": "CERT_MATERIALI"
-          },
-          {
-            "ID": "CONS_ACQUA"
-          }
-        ]
-      },
-      {
-        "form_language": "it",
-        "form_name": "Extra",
-        "fields": [
-          {
-            "ID": "CERT_AZIENDALE"
-          },
-          {
-            "ID": "CERT_MATERIALI"
           }
         ]
       }
@@ -218,17 +203,6 @@
         "company_webservice": "",
         "productfamily_code": null,
         "item_code": null,
-        "batch_code": null,
-        "batch_qty": 5000,
-        "batch_qty_unit_of_measure": "KG"
-      },
-      {
-        "company_code": "TEST",
-        "company_shortname": "TEST",
-        "company_uuid": "a13",
-        "company_webservice": "",
-        "productfamily_code": null,
-        "item_code": "prova",
         "batch_code": null,
         "batch_qty": 5000,
         "batch_qty_unit_of_measure": "KG"
