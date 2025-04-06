@@ -5,10 +5,10 @@ import PropTypes from 'prop-types';
 
 function InputForm({ getApiUrl, fetchData, lang }) {
   const [formData, setFormData] = useState({
-    batch_code: 'C685',
-    item_code: 'MED000X-60620-XL',
-    productfamily_code: 'MED000X-60620',
-    company_code: 'StaffJersey',
+    batch_code: 'MG01S-A',
+    item_code: 'MG01S',
+    productfamily_code: 'MG',
+    company_code: 'GreenFashionLab',
     url: 'https://80.211.143.55',
   });
   const [formVisible, setFormVisible] = useState(true);

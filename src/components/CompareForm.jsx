@@ -35,9 +35,8 @@ function CompareForm({ form1, data_list1, form2, data_list2 }) {
 
   return (
     <section>
-      <div className="row">
         <div className="col-12">
-          <h2 className="mb-3 mt-4 text-start">
+          <h2 className="mb-3 mt-5 text-start">
             {form1
             ? form1.form_name
             : form2.form_name
@@ -48,8 +47,8 @@ function CompareForm({ form1, data_list1, form2, data_list2 }) {
               <div className="label text-start py-2 fw-bold col-12 pe-0">
                 {item.label}
               </div>
-              <div className="row col-12">
-                <div className="col-6 pe-0 ps-0">
+              <div className="d-flex col-12">
+                <div className="col-6 pe-0">
                   <div className="value py-2">
                       {item.value1.value_url ? 
                         (item.value1.value_url_type === "image" ? 
@@ -60,7 +59,7 @@ function CompareForm({ form1, data_list1, form2, data_list2 }) {
                       }
                     </div>
                 </div>
-                <div className="col-6 ps-0">
+                <div className="col-6 pe-0">
                     <div className="value py-2">
                       {item.value2.value_url ? 
                         (item.value2.value_url_type === "image" ? 
@@ -75,7 +74,6 @@ function CompareForm({ form1, data_list1, form2, data_list2 }) {
             </div>
           ))}
         </div>
-      </div>
     </section>
   )
 }

@@ -17,14 +17,14 @@ function CompareForms({ data1, data2, setShowCompare, language }) {
       <button className='btn btn-secondary mt-3' onClick={() => setShowCompare(false)}>
         {translations[language].back_text}
       </button>
-      <div className="row mt-3 text-center fw-bold">
+      <h2 className="d-flex mt-3 text-center fw-bold">
         <div className="col-6">
             {data1.summary.item_name}
         </div>
         <div className="col-6">
             {data2.summary.item_name}
         </div>
-      </div>
+      </h2>
       {form_name_list.map((form_name, index) => (
         <CompareForm
           form1={data1.forms.find(form => form.form_name === form_name)}

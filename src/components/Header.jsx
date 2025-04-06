@@ -45,6 +45,7 @@ function Header( {setLanguage} ) {
     const userObject = jwtDecode(response.credential);
     setUserProfile(userObject);
     document.cookie = `jwtToken=${response.credential}; max-age=172800; secure; SameSite=Strict`;
+    //this log must be removed on production
     console.log(response.credential);
   };
   

@@ -21,6 +21,11 @@ function App() {
   const [language, setLanguage] = useState('IT');
   const [compare_list, setCompareList] = useState([]);
   const [show_compare, setShowCompare] = useState(false);
+  const [data_history, setDataHistory] = useState(new Set());
+
+  const addElementToHistory = (element) => {
+    setDataHistory(prev => new Set(prev).add(element));
+  };
 
   const addCompareElement = (element) => {
     if (compare_list.length < 2) {
@@ -104,6 +109,10 @@ function App() {
       }
       const jsonData = await response.json();
       setData(jsonData);
+      if (data_history.size > 0){
+        //open popup
+      }
+      addElementToHistory(jsonData);
     } catch (err) {
       setError(err.message);
     } finally {
@@ -130,7 +139,7 @@ function App() {
               {back_button_visible && 
                 <button className="mt-2 btn btn-secondary" onClick={handleBackButtonClick}>{translations[language].back_text}</button>
               }
-      
+
               {data && data.forms.map((form, index) => (
                 <OutputForm form={form} data_list={data.data} lang={language} key={index}/>
               ))}

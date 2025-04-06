@@ -31,7 +31,7 @@ function BottomBar({ items, removeItem, setShowCompare, language }) {
             position: 'relative',
           }}
         >
-          {item.summary.item_name}
+          {item.summary.item_code}
           <button
             onClick={() => removeItem(index)}
             style={{
