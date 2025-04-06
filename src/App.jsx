@@ -59,15 +59,7 @@ function App() {
     setData(new_data);
   };
 
-  const getApiUrl = ({url, batch_code, item_code, productfamily_code, company_code}) => {
-    let api_url = `${url}/browser-protocol/get_batch_details/${batch_code}/${item_code}/${productfamily_code}/${company_code}/${language}/?format=json`;
-    if (!api_url.startsWith("https://")) {
-      api_url = `https://${api_url}`;
-    }
-    return api_url;
-  };
-
-  const fetchData = async ({api_url, save_data=false}) => {
+  const fetchData = async ({api_url}) => {
     if (!api_url.endsWith("/?format=json")) {
       if (!api_url.endsWith("/")) {
         api_url = `${api_url}/`;
@@ -85,7 +77,8 @@ function App() {
         if (!isTokenValid(decodedToken)) {
           token = null;
         }
-      } catch (error) {
+      }
+      catch (error) {
         console.log(error);
       }
     }
@@ -93,6 +86,7 @@ function App() {
       token = null;
     }
 
+    var jsonData = null;
     try {
       const response = await fetch(api_url, {
         method: 'GET',
@@ -104,19 +98,33 @@ function App() {
       if (!response.ok) {
         throw new Error(`Errore nella richiesta: ${response.status}`);
       }
-      if (save_data) {
-        pushElement(data);
-      }
-      const jsonData = await response.json();
+      jsonData = await response.json();
       setData(jsonData);
+      return jsonData;
+    }
+    catch (err) {
+      setError(err.message);
+      return jsonData;
+    }
+    finally {
+      setLoading(false);
+    }
+  };
+
+  const loadNewElement = async ({api_url, save_parent=false}) => {
+    const parent_data = data;
+    const new_element_data = await fetchData({api_url:api_url});
+
+    if (new_element_data) {
+      if (save_parent) {
+        pushElement(parent_data);
+      }
+
       if (data_history.size > 0){
         //open popup
       }
-      addElementToHistory(jsonData);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
+
+      addElementToHistory(new_element_data);
     }
   };
 
@@ -130,7 +138,7 @@ function App() {
         ? <CompareForms data1={compare_list[0]} data2={compare_list[1]} setShowCompare={setShowCompare} language={language}/>
         : <div>
             <div>
-              <InputForm getApiUrl={getApiUrl} fetchData={fetchData} lang={language}/>
+              <InputForm loadNewElement={loadNewElement} lang={language}/>
       
               {error && <p style={{ color: 'red' }}>{error}</p>}
       
@@ -147,7 +155,7 @@ function App() {
               {data && <button className="btn btn-primary mt-2" onClick={() => addCompareElement(data)}>{translations[language].compare_text}</button>}
       
               {data && data.linked_batches.map((linked_batch, index) => (
-                <LinkedCard getApiUrl={getApiUrl} fetchData={fetchData} linked_batch={linked_batch} key={index}/>
+                <LinkedCard loadNewElement={loadNewElement} linked_batch={linked_batch} lang={language} key={index}/>
               ))}
             </div>
           </div>

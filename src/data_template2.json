@@ -196,10 +196,10 @@
     ],
     "linked_batches": [
       {
-        "company_code": "INTERFIL",
+        "partner_code": "INTERFIL",
         "company_shortname": "INTERFIL",
         "company_uuid": "a4c62c25-9bd1-4746-add8-10a6d1888fc2",
-        "company_webservice": "",
+        "partner_webservice": "",
         "productfamily_code": null,
         "item_code": null,
         "batch_code": null,

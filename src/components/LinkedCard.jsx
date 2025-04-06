@@ -1,15 +1,16 @@
 import PropTypes from 'prop-types';
+import {getApiUrl} from '../utilities.jsx'
 
-function LinkedCard( {getApiUrl, fetchData, linked_batch} ) {
+function LinkedCard( {loadNewElement, linked_batch, lang} ) {
   const handleCardClick = () => {
-    let api_url = getApiUrl({url:linked_batch.partner_webservice,
-      batch_code:linked_batch.batch_code,
-      item_code:linked_batch.item_code,
-      productfamily_code:linked_batch.productfamily_code,
-      company_code:linked_batch.partner_code
-    });
+    let api_url = getApiUrl(linked_batch.partner_webservice,
+      linked_batch.batch_code,
+      linked_batch.item_code,
+      linked_batch.productfamily_code,
+      linked_batch.partner_code,
+      lang);
 
-    fetchData({ api_url:api_url, save_data:true });
+    loadNewElement({ api_url:api_url, save_parent:true });
   };
 
   return (
@@ -24,8 +25,7 @@ function LinkedCard( {getApiUrl, fetchData, linked_batch} ) {
   )
 }
 LinkedCard.propTypes = {
-  getApiUrl: PropTypes.func.isRequired,
-  fetchData: PropTypes.func.isRequired,
+  loadNewElement: PropTypes.func.isRequired,
   linked_batch: PropTypes.shape({
     partner_webservice: PropTypes.string.isRequired,
     batch_code: PropTypes.string.isRequired,
@@ -35,6 +35,7 @@ LinkedCard.propTypes = {
     batch_qty: PropTypes.number,
     batch_qty_unit_of_measure: PropTypes.string.isRequired,
   }),
+  lang: PropTypes.string.isRequired,
 };
 
 

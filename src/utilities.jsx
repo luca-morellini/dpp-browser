@@ -23,3 +23,12 @@ export function isTokenValid(token) {
 
   return result;
 };
+
+export function getApiUrl (url, batch_code, item_code, productfamily_code, company_code, language) {
+  let api_url = `${url}/browser-protocol/get_batch_details/${batch_code}/${item_code}/${productfamily_code}/${company_code}/${language}/?format=json`;
+  if (!api_url.startsWith("https://")) {
+    api_url = `https://${api_url}`;
+  }
+
+  return api_url;
+};

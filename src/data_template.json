@@ -211,21 +211,21 @@
     ],
     "linked_batches": [
       {
-        "company_code": "INTERFIL",
+        "partner_code": "GreenFashionLab",
         "company_shortname": "INTERFIL",
         "company_uuid": "a4c62c25-9bd1-4746-add8-10a6d1888fc2",
-        "company_webservice": "",
-        "productfamily_code": null,
-        "item_code": null,
-        "batch_code": null,
+        "partner_webservice": "https://80.211.143.55",
+        "productfamily_code": "MG",
+        "item_code": "MG01S",
+        "batch_code": "MG01S-A",
         "batch_qty": 5000,
         "batch_qty_unit_of_measure": "KG"
       },
       {
-        "company_code": "TEST",
+        "partner_code": "TEST",
         "company_shortname": "TEST",
         "company_uuid": "a13",
-        "company_webservice": "",
+        "partner_webservice": "",
         "productfamily_code": null,
         "item_code": "prova",
         "batch_code": null,

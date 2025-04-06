@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react';
 import Scanner from './Scanner';
 import translations from "./Translations.json";
 import PropTypes from 'prop-types';
+import {getApiUrl} from '../utilities.jsx'
 
-function InputForm({ getApiUrl, fetchData, lang }) {
+function InputForm({ loadNewElement, lang }) {
   const [formData, setFormData] = useState({
     batch_code: 'MG01S-A',
     item_code: 'MG01S',
@@ -36,14 +37,14 @@ function InputForm({ getApiUrl, fetchData, lang }) {
   };
 
   const handleEnterButtonClick = () => {
-    let api_url = getApiUrl({url:formData.url,
-      batch_code:formData.batch_code,
-      item_code:formData.item_code,
-      productfamily_code:formData.productfamily_code,
-      company_code:formData.company_code
-    });
+    let api_url = getApiUrl(formData.url,
+      formData.batch_code,
+      formData.item_code,
+      formData.productfamily_code,
+      formData.company_code,
+      lang);
     
-    fetchData({api_url:api_url});
+    loadNewElement({api_url:api_url});
   };
 
   return (
@@ -75,14 +76,13 @@ function InputForm({ getApiUrl, fetchData, lang }) {
             </form>
             <button className="mt-2 btn btn-primary" onClick={handleEnterButtonClick}>{translations[lang].send_text}</button>
           </div>
-        : <Scanner fetchData={fetchData}/>
+        : <Scanner loadNewElement={loadNewElement}/>
       }
     </section>
   )
 }
 InputForm.propTypes = {
-  getApiUrl: PropTypes.func.isRequired,
-  fetchData: PropTypes.func.isRequired,
+  loadNewElement: PropTypes.func.isRequired,
   lang: PropTypes.string.isRequired,
 };
 

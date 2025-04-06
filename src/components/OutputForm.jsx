@@ -42,7 +42,7 @@ function OutputForm({ form, data_list, lang }) {
   )
 }
 OutputForm.propTypes = {
-  form: PropTypes.array.isRequired,
+  form: PropTypes.object.isRequired,
   lang: PropTypes.string.isRequired,
   data_list: PropTypes.array.isRequired,
 };
