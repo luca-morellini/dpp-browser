@@ -19,10 +19,10 @@ function CompareForms({ data1, data2, setShowCompare, language }) {
       </button>
       <h2 className="d-flex mt-3 text-center fw-bold">
         <div className="col-6">
-            {data1.summary.item_name}
+            {data1.summary.item_code}
         </div>
         <div className="col-6">
-            {data2.summary.item_name}
+            {data2.summary.item_code}
         </div>
       </h2>
       {form_name_list.map((form_name, index) => (
@@ -38,29 +38,17 @@ function CompareForms({ data1, data2, setShowCompare, language }) {
 }
 CompareForms.propTypes = {
   data1: PropTypes.shape({
-    forms: PropTypes.arrayOf(
-      PropTypes.shape({
-        form_name: PropTypes.string.isRequired,
-      })
-    ).isRequired,
-    summary: PropTypes.arrayOf(
-      PropTypes.shape({
-        item_name: PropTypes.string.isRequired,
-      })
-    ).isRequired,
+    forms: PropTypes.array.isRequired,
+    summary: PropTypes.shape({
+      item_code: PropTypes.string.isRequired,
+    }),
     data: PropTypes.array.isRequired,
   }),
   data2: PropTypes.shape({
-    forms: PropTypes.arrayOf(
-      PropTypes.shape({
-        form_name: PropTypes.string.isRequired,
-      })
-    ).isRequired,
-    summary: PropTypes.arrayOf(
-      PropTypes.shape({
-        item_name: PropTypes.string.isRequired,
-      })
-    ).isRequired,
+    forms: PropTypes.array.isRequired,
+    summary: PropTypes.shape({
+      item_code: PropTypes.string.isRequired,
+    }),
     data: PropTypes.array.isRequired,
   }),
   setShowCompare: PropTypes.func.isRequired,

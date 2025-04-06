@@ -1,19 +1,20 @@
 import OutputForm from "./components/OutputForm";
 import InputForm from "./components/InputForm";
 import LinkedCard from "./components/LinkedCard.jsx";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import translations from "./components/Translations.json";
 import Header from "./components/Header";
 import CompareForms from "./components/CompareForms";
 //import json_template from "./data_template.json"
 //import json_template2 from "./data_template2.json"
-import BottomBar from "./components/BottomBar";
 import {isTokenValid, getCookie} from './utilities.jsx'
 import { jwtDecode } from "jwt-decode";
+import ComparePopup from "./components/ComparePopup.jsx";
+import SelectListPopup from "./components/SelectListPopup.jsx";
 
 function App() {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [back_button_visible, setBackButtonVisible] = useState(false);
@@ -21,21 +22,25 @@ function App() {
   const [language, setLanguage] = useState('IT');
   const [compare_list, setCompareList] = useState([]);
   const [show_compare, setShowCompare] = useState(false);
-  const [data_history, setDataHistory] = useState(new Set());
+  const [data_history, setDataHistory] = useState([]);
+  const [odata_history_ids, setDataHistoryIds] = useState(new Set());
+  const [show_confirmation_popup, setShowConfirmationPopup] = useState(false);
+  const [show_select_popup, setShowSelectPopup] = useState(false);
 
   const addElementToHistory = (element) => {
-    setDataHistory(prev => new Set(prev).add(element));
-  };
+    const newId = element.summary.company_code + element.summary.productfamily_code + element.summary.item_code + element.summary.batch_code + element.summary.language;
+    if (!odata_history_ids.has(newId)) {
+      setDataHistory(prevList => [...prevList, element]);
 
-  const addCompareElement = (element) => {
-    if (compare_list.length < 2) {
-      setCompareList([...compare_list, element]);
+      setDataHistoryIds(prevIds => new Set(prevIds).add(newId));
     }
   };
 
-  const removeCompareElement = (indexToRemove) => {
-    setCompareList(compare_list.filter((_, index) => index !== indexToRemove));
-  };
+  useEffect(() => {
+    if (data_history.length >= 2) {
+      setShowConfirmationPopup(true);
+    }
+  }, [data_history]);
 
   const pushElement = (new_element) => {
     if (new_element) {
@@ -120,16 +125,33 @@ function App() {
         pushElement(parent_data);
       }
 
-      if (data_history.size > 0){
-        //open popup
-      }
-
       addElementToHistory(new_element_data);
     }
   };
 
+  const handleCloseConfirmationPopup = () => {
+    setShowConfirmationPopup(false);
+  };
+
+  const handleConfirmPopup = () => {
+    setShowConfirmationPopup(false);
+    setShowSelectPopup(true);
+  };
+
+  const handleCloseSelectPopup = () => {
+    setShowSelectPopup(false);
+  };
+
+  const handleConfirmCompare = (item) => {
+    setShowSelectPopup(false);
+    console.log(data);
+    console.log(item);
+    setCompareList([data, item]);
+    setShowCompare(true);
+  };
+
   return (
-    <div className="container">
+    <div className="container mb-5">
       <Header setLanguage={setLanguage}/>
       
       <h1 className="title">{translations[language].dpp_title_text}</h1>
@@ -152,17 +174,35 @@ function App() {
                 <OutputForm form={form} data_list={data.data} lang={language} key={index}/>
               ))}
       
-              {data && <button className="btn btn-primary mt-2" onClick={() => addCompareElement(data)}>{translations[language].compare_text}</button>}
+              {data && (data_history.length > 1) &&
+                <button className="btn btn-primary mt-2" onClick={() => setShowSelectPopup(true)}>{translations[language].compare_text}</button>
+              }
       
               {data && data.linked_batches.map((linked_batch, index) => (
                 <LinkedCard loadNewElement={loadNewElement} linked_batch={linked_batch} lang={language} key={index}/>
               ))}
+
+              <ComparePopup
+                show={show_confirmation_popup}
+                handleClose={handleCloseConfirmationPopup}
+                handleConfirm={handleConfirmPopup}
+                lang={language}
+              />
+
+              {show_select_popup &&
+                <SelectListPopup
+                  show={show_select_popup}
+                  history={data_history}
+                  curr_element={data}
+                  handleClose={handleCloseSelectPopup}
+                  handleConfirmCompare={handleConfirmCompare}
+                  lang={language}
+                />
+              }
+
             </div>
           </div>
       }
-      <div className="p-4" style={{ height: '60px' }}>
-        {(compare_list.length > 0) && <BottomBar items={compare_list} removeItem={removeCompareElement} setShowCompare={setShowCompare} language={language}/>}
-      </div>
     </div>
   )
 }

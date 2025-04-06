@@ -10,7 +10,12 @@
         "productfamily_code_text": "Codice Famiglia Articolo",
         "company_code_text": "Codice Azienda",
         "send_text": "Invia",
-        "compare_text": "Confronta"
+        "compare_text": "Confronta",
+        "yes_text": "Sì",
+        "no_text": "No",
+        "compare_popup_title_text": "Confrontare?",
+        "compare_popup_body_text": "Vuoi confrontare questo oggetto con uno degli oggetti scansionati in precedenza?",
+        "select_item_text": "Seleziona un oggetto"
     },
     "EN": {
         "dpp_title_text": "Digital Product Passport",
@@ -23,7 +28,11 @@
         "productfamily_code_text": "Product Family Code",
         "company_code_text": "Company Code",
         "send_text": "Send",
-        "compare_text": "Compare"
+        "compare_text": "Compare",
+        "yes_text": "Yes",
+        "no_text": "No",
+        "compare_popup_title_text": "Compare?",
+        "compare_popup_body_text": "Do you want to compare this item with one of the previously scanned items?"
     },
     "ES": {
         "dpp_title_text": "Pasaporte Digital del Producto",
@@ -36,7 +45,11 @@
         "productfamily_code_text": "Código de Familia de Producto",
         "company_code_text": "Código de Empresa",
         "send_text": "Enviar",
-        "compare_text": "Comparar"
+        "compare_text": "Comparar",
+        "yes_text": "Sí",
+        "no_text": "No",
+        "compare_popup_title_text": "¿Comparar?",
+        "compare_popup_body_text": "¿Quieres comparar este objeto con uno de los objetos escaneados previamente?"
     },
     "FR": {
         "dpp_title_text": "Passeport Produit Numérique",
@@ -49,6 +62,10 @@
         "productfamily_code_text": "Code de Famille de Produits",
         "company_code_text": "Code d'Entreprise",
         "send_text": "Envoyer",
-        "compare_text": "Comparer"
+        "compare_text": "Comparer",
+        "yes_text": "Oui",
+        "no_text": "Non",
+        "compare_popup_title_text": "Comparer?",
+        "compare_popup_body_text": "Voulez-vous comparer cet objet avec un des objets scannés précédemment?"
     }
 }

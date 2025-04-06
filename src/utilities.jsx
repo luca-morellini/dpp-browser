@@ -32,3 +32,16 @@ export function getApiUrl (url, batch_code, item_code, productfamily_code, compa
 
   return api_url;
 };
+
+export function compareDppDatas(data1, data2) {
+  var result = 1;
+  if (data1.summary.company_code === data2.summary.company_code &&
+    data1.summary.productfamily_code === data2.summary.productfamily_code &&
+    data1.summary.item_code === data2.summary.item_code && 
+    data1.summary.batch_code === data2.summary.batch_code &&
+    data1.summary.language === data2.summary.language) {
+    result = 0
+  }
+
+  return result;
+};

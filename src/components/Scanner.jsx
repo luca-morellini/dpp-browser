@@ -23,8 +23,8 @@ function Scanner({ loadNewElement }) {
       scanner.clear();
     }
   
-    function error(err){
-      console.warn(err);
+    function error(error){
+      console.warn(error);
     }
   });
 

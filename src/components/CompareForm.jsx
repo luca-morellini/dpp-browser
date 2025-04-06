@@ -43,7 +43,7 @@ function CompareForm({ form1, data_list1, form2, data_list2 }) {
             }
           </h2>
           {mergedList.map((item, index) => (
-            <div key={index}>
+            <div style={ index === 0 ? {borderTop: '1px solid #989898'} : {}} key={index}>
               <div className="label text-start py-2 fw-bold col-12 pe-0">
                 {item.label}
               </div>
