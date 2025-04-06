@@ -6,6 +6,12 @@ import { compareDppDatas } from "../utilities";
 
 function SelectListPopup({ show, history, curr_element, handleClose, handleConfirmCompare, lang }) {
   const [selectedItemIndex, setSelectedItemIndex] = useState(null);
+  const [isButtonDisabled, setButtonDisabled] = useState(true);
+
+  const handleSelectedItem = (index) => {
+    setSelectedItemIndex(index);
+    setButtonDisabled(false);
+  };
 
   const filteredHistory = history.filter(
     (item) => compareDppDatas(item, curr_element)
@@ -28,7 +34,7 @@ function SelectListPopup({ show, history, curr_element, handleClose, handleConfi
               className={`list-group-item ${
                 selectedItemIndex === index ? "active" : ""
               }`}
-              onClick={() => setSelectedItemIndex(index)}
+              onClick={() => handleSelectedItem(index)}
               style={{ cursor: "pointer" }}
             >
               {item.summary.item_code}
@@ -37,7 +43,7 @@ function SelectListPopup({ show, history, curr_element, handleClose, handleConfi
         </ul>
       </Modal.Body>
       <Modal.Footer>
-        <button className="secondary" onClick={handleCompare}>
+        <button className="secondary" disabled={isButtonDisabled} onClick={handleCompare}>
           {translations[lang].compare_text}
         </button>
       </Modal.Footer>
