@@ -13,7 +13,6 @@
         "compare_text": "Confronta",
         "yes_text": "Sì",
         "no_text": "No",
-        "compare_popup_title_text": "Confrontare?",
         "compare_popup_body_text": "Vuoi confrontare questo oggetto con uno degli oggetti scansionati in precedenza?",
         "select_item_text": "Seleziona un oggetto"
     },
@@ -31,7 +30,6 @@
         "compare_text": "Compare",
         "yes_text": "Yes",
         "no_text": "No",
-        "compare_popup_title_text": "Compare?",
         "compare_popup_body_text": "Do you want to compare this item with one of the previously scanned items?"
     },
     "ES": {
@@ -48,7 +46,6 @@
         "compare_text": "Comparar",
         "yes_text": "Sí",
         "no_text": "No",
-        "compare_popup_title_text": "¿Comparar?",
         "compare_popup_body_text": "¿Quieres comparar este objeto con uno de los objetos escaneados previamente?"
     },
     "FR": {
@@ -65,7 +62,6 @@
         "compare_text": "Comparer",
         "yes_text": "Oui",
         "no_text": "Non",
-        "compare_popup_title_text": "Comparer?",
         "compare_popup_body_text": "Voulez-vous comparer cet objet avec un des objets scannés précédemment?"
     }
 }

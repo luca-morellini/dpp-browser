@@ -43,7 +43,7 @@ function SelectListPopup({ show, history, curr_element, handleClose, handleConfi
         </ul>
       </Modal.Body>
       <Modal.Footer>
-        <button className="secondary" disabled={isButtonDisabled} onClick={handleCompare}>
+        <button className="btn btn-primary" disabled={isButtonDisabled} onClick={handleCompare}>
           {translations[lang].compare_text}
         </button>
       </Modal.Footer>

@@ -49,7 +49,7 @@ function InputForm({ loadNewElement, lang }) {
 
   return (
     <section>
-      <button className="mt-2 btn btn-primary" onClick={handleShowButtonClick}>{btnLabel}</button>
+      <button className="mt-2 mb-2 btn btn-primary" onClick={handleShowButtonClick}>{btnLabel}</button>
       {formVisible
         ? <div className="text-start">
             <form>
