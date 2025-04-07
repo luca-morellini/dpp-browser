@@ -8,7 +8,7 @@ function OutputForm({ form, data_list, lang }) {
   const value_class_name_list = orderedData.map(e =>
      e.language.toLowerCase() === lang.toLowerCase() ? 'value py-2' : 'value py-2 bg-warning');
 
-  const form_name_class = `mb-3 mt-5 text-start ${form.form_language.toLowerCase() === lang.toLowerCase() ? '' : 'bg-warning'}`;
+  const form_name_class = `mb-3 mt-4 text-start ${form.form_language.toLowerCase() === lang.toLowerCase() ? '' : 'bg-warning'}`;
 
   return (
     <section>

@@ -175,7 +175,7 @@ function App() {
               ))}
       
               {data && (data_history.length > 1) &&
-                <button className="btn btn-primary mt-2" onClick={() => setShowSelectPopup(true)}>{translations[language].compare_text}</button>
+                <button className="btn btn-primary mt-4" onClick={() => setShowSelectPopup(true)}>{translations[language].compare_text}</button>
               }
       
               {data && data.linked_batches.map((linked_batch, index) => (

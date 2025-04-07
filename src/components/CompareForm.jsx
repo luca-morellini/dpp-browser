@@ -36,7 +36,7 @@ function CompareForm({ form1, data_list1, form2, data_list2 }) {
   return (
     <section>
         <div className="col-12">
-          <h2 className="mb-3 mt-5 text-start">
+          <h2 className="mb-3 mt-4 text-start">
             {form1
             ? form1.form_name
             : form2.form_name

@@ -39,7 +39,7 @@ function Scanner({ loadNewElement }) {
 
   return (
     <div>
-      <div id="reader"></div>
+      <div id="reader" style={{ width: '100%', maxWidth: '500px', margin: 'auto', border: '0px' }}></div>
     </div>
   )
 }
