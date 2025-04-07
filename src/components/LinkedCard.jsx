@@ -10,7 +10,6 @@ function LinkedCard( {loadNewElement, linked_batch, lang} ) {
       linked_batch.company_code,
       lang);
       
-    console.log(api_url);
     loadNewElement({ api_url:api_url, save_parent:true });
   };
 

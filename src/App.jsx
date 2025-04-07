@@ -111,7 +111,6 @@ function App() {
       }
       jsonData = await response.json();
       setData(jsonData);
-      console.log(jsonData);
       return jsonData;
     }
     catch (err) {
