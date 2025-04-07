@@ -3,13 +3,14 @@ import {getApiUrl} from '../utilities.jsx'
 
 function LinkedCard( {loadNewElement, linked_batch, lang} ) {
   const handleCardClick = () => {
-    let api_url = getApiUrl(linked_batch.company_webservice,
+    const api_url = getApiUrl(linked_batch.company_webservice,
       linked_batch.batch_code,
       linked_batch.item_code,
       linked_batch.productfamily_code,
-      linked_batch.partner_code,
+      linked_batch.company_code,
       lang);
-
+      
+    console.log(api_url);
     loadNewElement({ api_url:api_url, save_parent:true });
   };
 
@@ -22,7 +23,8 @@ function LinkedCard( {loadNewElement, linked_batch, lang} ) {
             ? linked_batch.company_shortname
             : linked_batch.item_code}
         </h5>
-        <p className="card-text">{linked_batch.batch_qty} {linked_batch.batch_qty_unit_of_measure}</p>
+        {/*Commented because we don't know if it will be actually used
+        <p className="card-text">{linked_batch.batch_qty} {linked_batch.batch_qty_unit_of_measure}</p>*/}
       </div>
     </div>
   )
@@ -36,7 +38,7 @@ LinkedCard.propTypes = {
     company_shortname: PropTypes.string,
     item_code: PropTypes.string.isRequired,
     productfamily_code: PropTypes.string.isRequired,
-    partner_code: PropTypes.string.isRequired,
+    company_code: PropTypes.string.isRequired,
     batch_qty: PropTypes.number,
     batch_qty_unit_of_measure: PropTypes.string.isRequired,
   }),
