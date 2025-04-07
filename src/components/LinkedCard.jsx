@@ -16,7 +16,12 @@ function LinkedCard( {loadNewElement, linked_batch, lang} ) {
   return (
     <div className="card clickable-card-blue" role="button" onClick={handleCardClick} style={{ width: '10rem' }}>
       <div className="card-body">
-        <h5 className="card-title">{linked_batch.item_code}</h5>
+        <h5 className="card-title">{linked_batch.item_name
+          ? linked_batch.item_name
+          : linked_batch.company_shortname 
+            ? linked_batch.company_shortname
+            : linked_batch.item_code}
+        </h5>
         <p className="card-text">{linked_batch.batch_qty} {linked_batch.batch_qty_unit_of_measure}</p>
       </div>
     </div>
@@ -27,6 +32,8 @@ LinkedCard.propTypes = {
   linked_batch: PropTypes.shape({
     company_webservice: PropTypes.string.isRequired,
     batch_code: PropTypes.string.isRequired,
+    item_name: PropTypes.string,
+    company_shortname: PropTypes.string,
     item_code: PropTypes.string.isRequired,
     productfamily_code: PropTypes.string.isRequired,
     partner_code: PropTypes.string.isRequired,

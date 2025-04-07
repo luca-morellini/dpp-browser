@@ -19,10 +19,14 @@ function CompareForms({ data1, data2, setShowCompare, language }) {
       </button>
       <h2 className="d-flex mt-3 text-center fw-bold">
         <div className="col-6">
-            {data1.summary.item_code}
+            {data1.summary.item_name
+            ? data1.summary.item_name
+            : data1.summary.item_code}
         </div>
         <div className="col-6">
-            {data2.summary.item_code}
+            {data2.summary.item_name
+            ? data2.summary.item_name
+            : data2.summary.item_code}
         </div>
       </h2>
       {form_name_list.map((form_name, index) => (
@@ -41,6 +45,7 @@ CompareForms.propTypes = {
   data1: PropTypes.shape({
     forms: PropTypes.array.isRequired,
     summary: PropTypes.shape({
+      item_name: PropTypes.string,
       item_code: PropTypes.string.isRequired,
     }),
     data: PropTypes.array.isRequired,
@@ -48,6 +53,7 @@ CompareForms.propTypes = {
   data2: PropTypes.shape({
     forms: PropTypes.array.isRequired,
     summary: PropTypes.shape({
+      item_name: PropTypes.string,
       item_code: PropTypes.string.isRequired,
     }),
     data: PropTypes.array.isRequired,

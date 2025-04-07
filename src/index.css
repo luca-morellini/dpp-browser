@@ -47,7 +47,3 @@
 .clickable-card-blue:hover {
   text-decoration: underline;
 }
-
-.clickable-card-blue:active {
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}

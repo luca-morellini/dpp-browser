@@ -59,7 +59,9 @@ function SelectListPopup({ show, history, setHistory, curr_element, ask_to_compa
               style={{ cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "center" }}
             >
               <span onClick={() => handleSelectedItem(index)} style={{ flexGrow: 1, marginRight: '10px' }}>
-                {item.summary.item_code}
+                {item.summary.item_name
+                ? item.summary.item_name
+                : item.summary.item_code}
               </span>
 
               <button

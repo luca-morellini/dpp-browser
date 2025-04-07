@@ -79,8 +79,8 @@ function CompareForm({ form1, data_list1, form2, data_list2, lang }) {
   )
 }
 CompareForm.propTypes = {
-  form1: PropTypes.array.isRequired,
-  form2: PropTypes.array.isRequired,
+  form1: PropTypes.object.isRequired,
+  form2: PropTypes.object.isRequired,
   data_list1: PropTypes.array.isRequired,
   data_list2: PropTypes.array.isRequired,
   lang: PropTypes.string.isRequired,
