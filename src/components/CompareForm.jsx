@@ -53,7 +53,7 @@ function CompareForm({ form1, data_list1, form2, data_list2 }) {
                       {item.value1.value_url ? 
                         (item.value1.value_url_type === "image" ? 
                           <img src={item.value1.value_url} className="col-6"/> :
-                          <a href={item.value1.value_url}>{item.value1.value_text ? item.value1.value_text : item.value1.value_url}</a> 
+                          <a href={item.value1.value_url}>{item.value1.value_text ? item.value1.value_text : "Link"}</a> 
                         ) :
                         <div>{item.value1.value_text}{item.value1.value_number} {item.value1.value_number_unit_of_measure}</div>
                       }
@@ -64,7 +64,7 @@ function CompareForm({ form1, data_list1, form2, data_list2 }) {
                       {item.value2.value_url ? 
                         (item.value2.value_url_type === "image" ? 
                           <img src={item.value2.value_url} className="col-6"/> :
-                          <a href={item.value2.value_url}>{item.value2.value_text ? item.value2.value_text : item.value2.value_url}</a> 
+                          <a href={item.value2.value_url}>{item.value2.value_text ? item.value2.value_text : "Link"}</a> 
                         ) :
                         <div>{item.value2.value_text}{item.value2.value_number} {item.value2.value_number_unit_of_measure}</div>
                       }
