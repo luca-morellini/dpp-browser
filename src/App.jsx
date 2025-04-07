@@ -1,6 +1,6 @@
 import OutputForm from "./components/OutputForm";
 import InputForm from "./components/InputForm";
-import LinkedCard from "./components/LinkedCard.jsx";
+import LinkedBatches from "./components/LinkedBatches.jsx";
 import { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import translations from "./components/Translations.json";
@@ -195,10 +195,10 @@ function App() {
               {data && (data_history.length > 1) &&
                 <button className="btn btn-primary mt-4" onClick={() => setShowSelectPopup(true)}>{translations[language].compare_text}</button>
               }
-      
-              {data && data.linked_batches.map((linked_batch, index) => (
-                <LinkedCard loadNewElement={loadNewElement} linked_batch={linked_batch} lang={language} key={index}/>
-              ))}
+
+              {data && data.linked_batches.length > 0 &&
+                <LinkedBatches loadNewElement={loadNewElement} linked_batches={data.linked_batches} lang={language}/>
+              }
 
               <ComparePopup
                 show={show_confirmation_popup}

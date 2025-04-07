@@ -3,7 +3,7 @@ import {getApiUrl} from '../utilities.jsx'
 
 function LinkedCard( {loadNewElement, linked_batch, lang} ) {
   const handleCardClick = () => {
-    let api_url = getApiUrl(linked_batch.partner_webservice,
+    let api_url = getApiUrl(linked_batch.company_webservice,
       linked_batch.batch_code,
       linked_batch.item_code,
       linked_batch.productfamily_code,
@@ -14,20 +14,18 @@ function LinkedCard( {loadNewElement, linked_batch, lang} ) {
   };
 
   return (
-    <section>
-      <div className="card col-2 mt-2 mb-2" role="button" onClick={handleCardClick}>
-        <div className="card-body">
-          <h5 className="card-title">{linked_batch.item_code}</h5>
-          <p className="card-text">{linked_batch.batch_qty} {linked_batch.batch_qty_unit_of_measure}</p>
-        </div>
+    <div className="card" role="button" onClick={handleCardClick} style={{ width: '10rem' }}>
+      <div className="card-body">
+        <h5 className="card-title">{linked_batch.item_code}</h5>
+        <p className="card-text">{linked_batch.batch_qty} {linked_batch.batch_qty_unit_of_measure}</p>
       </div>
-    </section>
+    </div>
   )
 }
 LinkedCard.propTypes = {
   loadNewElement: PropTypes.func.isRequired,
   linked_batch: PropTypes.shape({
-    partner_webservice: PropTypes.string.isRequired,
+    company_webservice: PropTypes.string.isRequired,
     batch_code: PropTypes.string.isRequired,
     item_code: PropTypes.string.isRequired,
     productfamily_code: PropTypes.string.isRequired,
