@@ -5,28 +5,38 @@ import PropTypes from 'prop-types';
 function Scanner({ loadNewElement }) {
 
   useEffect(() => {
-    const scanner = new Html5QrcodeScanner('reader',{
-      qrbox: {
-        height: 450,
-        width: 450,
+    const scanner = new Html5QrcodeScanner(
+      'reader',
+      {
+        qrbox: { height: 250, width: 250, },
+        fps: 10,
+        facingMode: "environment",
+        rememberLastUsedCamera: false,
       },
-      fps: 30,
-    })
-  
-    scanner.render(success, error);
-  
+      false)
+
     function success(result) {
       if (result) {
         loadNewElement({api_url:result});
       }
-
-      scanner.clear();
+  
+      scanner.clear().catch(error => console.error("Failed to clear scanner", error));
     }
   
     function error(error){
       console.warn(error);
     }
-  });
+  
+    scanner.render(success, error);
+
+    return () => {
+      console.log("Cleaning up scanner...");
+       scanner.clear().catch(error => {
+         console.error("Failed to clear html5-qrcode scanner on unmount.", error);
+       });
+    };
+  
+  }, [loadNewElement]);
 
   return (
     <div>
