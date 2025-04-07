@@ -26,6 +26,11 @@ function App() {
   const [odata_history_ids, setDataHistoryIds] = useState(new Set());
   const [show_confirmation_popup, setShowConfirmationPopup] = useState(false);
   const [show_select_popup, setShowSelectPopup] = useState(false);
+  const [ask_to_compare, setAskToCompare] = useState(true);
+
+  const handleAskToCompareCheckbox = (event) => {
+    setAskToCompare(event.target.checked);
+  };
 
   const addElementToHistory = (element) => {
     const newId = element.summary.company_code + element.summary.productfamily_code + element.summary.item_code + element.summary.batch_code + element.summary.language;
@@ -37,10 +42,10 @@ function App() {
   };
 
   useEffect(() => {
-    if (data_history.length >= 2) {
+    if (data_history.length >= 2 && ask_to_compare) {
       setShowConfirmationPopup(true);
     }
-  }, [data_history]);
+  }, [data_history, ask_to_compare]);
 
   const pushElement = (new_element) => {
     if (new_element) {
@@ -155,6 +160,19 @@ function App() {
       <Header setLanguage={setLanguage}/>
       
       <h1 className="title">{translations[language].dpp_title_text}</h1>
+
+      <div className="form-check mt-3 mb-4">
+        <input
+          className="form-check-input"
+          type="checkbox"
+          id="compare-checkbox"
+          checked={ask_to_compare}
+          onChange={handleAskToCompareCheckbox}
+        />
+        <label className="form-check-label" htmlFor="compare-checkbox" >
+          {translations[language].ask_to_compare_text}
+        </label>
+      </div>
 
       {show_compare
         ? <CompareForms data1={compare_list[0]} data2={compare_list[1]} setShowCompare={setShowCompare} language={language}/>
