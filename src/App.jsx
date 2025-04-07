@@ -8,7 +8,7 @@ import Header from "./components/Header";
 import CompareForms from "./components/CompareForms";
 //import json_template from "./data_template.json"
 //import json_template2 from "./data_template2.json"
-import {isTokenValid, getCookie} from './utilities.jsx'
+import { isTokenValid, getCookie, compareDppDatas } from './utilities.jsx'
 import { jwtDecode } from "jwt-decode";
 import ComparePopup from "./components/ComparePopup.jsx";
 import SelectListPopup from "./components/SelectListPopup.jsx";
@@ -23,7 +23,6 @@ function App() {
   const [compare_list, setCompareList] = useState([]);
   const [show_compare, setShowCompare] = useState(false);
   const [data_history, setDataHistory] = useState([]);
-  const [odata_history_ids, setDataHistoryIds] = useState(new Set());
   const [show_confirmation_popup, setShowConfirmationPopup] = useState(false);
   const [show_select_popup, setShowSelectPopup] = useState(false);
   const [ask_to_compare, setAskToCompare] = useState(true);
@@ -32,12 +31,13 @@ function App() {
     setAskToCompare(event.target.checked);
   };
 
-  const addElementToHistory = (element) => {
-    const newId = element.summary.company_code + element.summary.productfamily_code + element.summary.item_code + element.summary.batch_code + element.summary.language;
-    if (!odata_history_ids.has(newId)) {
-      setDataHistory(prevList => [...prevList, element]);
+  const addElementToHistory = (newElement) => {
+    const is_already_in_list = data_history.some((existingItem) => {
+      return compareDppDatas(newElement, existingItem) === 0;
+    });
 
-      setDataHistoryIds(prevIds => new Set(prevIds).add(newId));
+    if (!is_already_in_list) {
+      setDataHistory([...data_history, newElement]);
     }
   };
 
@@ -45,7 +45,8 @@ function App() {
     if (data_history.length >= 2 && ask_to_compare) {
       setShowConfirmationPopup(true);
     }
-  }, [data_history, ask_to_compare]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data_history]);
 
   const pushElement = (new_element) => {
     if (new_element) {
@@ -149,8 +150,6 @@ function App() {
 
   const handleConfirmCompare = (item) => {
     setShowSelectPopup(false);
-    console.log(data);
-    console.log(item);
     setCompareList([data, item]);
     setShowCompare(true);
   };
@@ -160,19 +159,6 @@ function App() {
       <Header setLanguage={setLanguage}/>
       
       <h1 className="title">{translations[language].dpp_title_text}</h1>
-
-      <div className="form-check mt-3 mb-4">
-        <input
-          className="form-check-input"
-          type="checkbox"
-          id="compare-checkbox"
-          checked={ask_to_compare}
-          onChange={handleAskToCompareCheckbox}
-        />
-        <label className="form-check-label" htmlFor="compare-checkbox" >
-          {translations[language].ask_to_compare_text}
-        </label>
-      </div>
 
       {show_compare
         ? <CompareForms data1={compare_list[0]} data2={compare_list[1]} setShowCompare={setShowCompare} language={language}/>
@@ -211,7 +197,10 @@ function App() {
                 <SelectListPopup
                   show={show_select_popup}
                   history={data_history}
+                  setHistory={setDataHistory}
                   curr_element={data}
+                  ask_to_compare={ask_to_compare}
+                  handleAskToCompareCheckbox={handleAskToCompareCheckbox}
                   handleClose={handleCloseSelectPopup}
                   handleConfirmCompare={handleConfirmCompare}
                   lang={language}

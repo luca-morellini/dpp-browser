@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import translations from "./Translations.json";
 
 function OutputForm({ form, data_list, lang }) {
   const orderedData = form.fields.map(field => 
@@ -28,7 +29,7 @@ function OutputForm({ form, data_list, lang }) {
                     {item.value_url ? 
                       (item.value_url_type === "image" ? 
                         <img src={item.value_url} className="col-6"/> :
-                        <a href={item.value_url}>{item.value_text ? item.value_text : "Link"}</a> 
+                        <a href={item.value_url}>{item.value_text ? item.value_text : translations[lang].link_text}</a> 
                       ) :
                       <div>{item.value_text}{item.value_number} {item.value_number_unit_of_measure}</div>
                     }

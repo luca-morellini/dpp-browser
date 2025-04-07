@@ -15,8 +15,9 @@
         "no_text": "No",
         "compare_popup_body_text": "Vuoi confrontare questo oggetto con uno degli oggetti scansionati in precedenza?",
         "select_item_text": "Seleziona un oggetto",
-        "ask_to_compare_text": "Chiedi di confrontare",
-        "traceability_text": "Tracciabilità"
+        "ask_to_compare_text": "Chiedi sempre di confrontare",
+        "traceability_text": "Tracciabilità",
+        "link_text": "Link"
     },
     "EN": {
         "dpp_title_text": "Digital Product Passport",
@@ -34,8 +35,9 @@
         "no_text": "No",
         "compare_popup_body_text": "Do you want to compare this item with one of the previously scanned items?",
         "select_item_text": "Select an object",
-        "ask_to_compare_text": "Request comparison",
-        "traceability_text": "Traceability"
+        "ask_to_compare_text": "Always ask to compare",
+        "traceability_text": "Traceability",
+        "link_text": "Link"
     },
     "ES": {
         "dpp_title_text": "Pasaporte Digital del Producto",
@@ -53,8 +55,9 @@
         "no_text": "No",
         "compare_popup_body_text": "¿Quieres comparar este objeto con uno de los objetos escaneados previamente?",
         "select_item_text": "Seleccione un objeto",
-        "ask_to_compare_text": "Solicitar comparar",
-        "traceability_text": "Trazabilidad"
+        "ask_to_compare_text": "Pide siempre comparar",
+        "traceability_text": "Trazabilidad",
+        "link_text": "Enlace"
     },
     "FR": {
         "dpp_title_text": "Passeport Produit Numérique",
@@ -72,7 +75,8 @@
         "no_text": "Non",
         "compare_popup_body_text": "Voulez-vous comparer cet objet avec un des objets scannés précédemment?",
         "select_item_text": "Sélectionnez un objet",
-        "ask_to_compare_text": "Demander de comparer",
-        "traceability_text": "Traçabilité"
+        "ask_to_compare_text": "Demandez toujours de comparer",
+        "traceability_text": "Traçabilité",
+        "link_text": "Lien"
     }
 }

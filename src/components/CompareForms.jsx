@@ -31,7 +31,8 @@ function CompareForms({ data1, data2, setShowCompare, language }) {
           data_list1={data1.data}
           form2={data2.forms.find(form => form.form_name === form_name)}
           data_list2={data2.data}
-          key = {index} />
+          lang={language}
+          key={index} />
       ))}
     </section>
   )

@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import translations from "./Translations.json";
 
 const mergeLists = (list1, list2) => {
   const result = new Map();
@@ -22,7 +23,7 @@ const mergeLists = (list1, list2) => {
   return Array.from(result.values());
 };
   
-function CompareForm({ form1, data_list1, form2, data_list2 }) {  
+function CompareForm({ form1, data_list1, form2, data_list2, lang }) {  
   const orderedData1 = form1 ? form1.fields.map(field => 
     data_list1.find(item => item.ID === field.ID))
     .filter(item => item != undefined) : "";
@@ -53,7 +54,7 @@ function CompareForm({ form1, data_list1, form2, data_list2 }) {
                       {item.value1.value_url ? 
                         (item.value1.value_url_type === "image" ? 
                           <img src={item.value1.value_url} className="col-6"/> :
-                          <a href={item.value1.value_url}>{item.value1.value_text ? item.value1.value_text : "Link"}</a> 
+                          <a href={item.value1.value_url}>{item.value1.value_text ? item.value1.value_text : translations[lang].link_text}</a> 
                         ) :
                         <div>{item.value1.value_text}{item.value1.value_number} {item.value1.value_number_unit_of_measure}</div>
                       }
@@ -64,7 +65,7 @@ function CompareForm({ form1, data_list1, form2, data_list2 }) {
                       {item.value2.value_url ? 
                         (item.value2.value_url_type === "image" ? 
                           <img src={item.value2.value_url} className="col-6"/> :
-                          <a href={item.value2.value_url}>{item.value2.value_text ? item.value2.value_text : "Link"}</a> 
+                          <a href={item.value2.value_url}>{item.value2.value_text ? item.value2.value_text : translations[lang].link_text}</a> 
                         ) :
                         <div>{item.value2.value_text}{item.value2.value_number} {item.value2.value_number_unit_of_measure}</div>
                       }
@@ -82,6 +83,7 @@ CompareForm.propTypes = {
   form2: PropTypes.array.isRequired,
   data_list1: PropTypes.array.isRequired,
   data_list2: PropTypes.array.isRequired,
+  lang: PropTypes.string.isRequired,
 };
   
 export default CompareForm;
