@@ -10,8 +10,7 @@ function Scanner({ loadNewElement }) {
       {
         qrbox: { height: 250, width: 250, },
         fps: 10,
-        facingMode: "environment",
-        rememberLastUsedCamera: false,
+        rememberLastUsedCamera: true,
       },
       false)
 
