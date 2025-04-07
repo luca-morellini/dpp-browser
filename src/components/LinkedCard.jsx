@@ -18,10 +18,9 @@ function LinkedCard( {loadNewElement, linked_batch, lang} ) {
       <div className="card-body">
         <h5 className="card-title">{linked_batch.item_name
           ? linked_batch.item_name
-          : linked_batch.company_shortname 
-            ? linked_batch.company_shortname
-            : linked_batch.item_code}
+          : linked_batch.batch_code}
         </h5>
+        <p className="card-text">{linked_batch.company_shortname}</p>
         {/*Commented because we don't know if it will be actually used
         <p className="card-text">{linked_batch.batch_qty} {linked_batch.batch_qty_unit_of_measure}</p>*/}
       </div>
