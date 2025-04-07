@@ -37,3 +37,17 @@
   justify-content: center;
   text-align: center;
 }
+
+.clickable-card-blue {
+  background-color: #ADD8E6 !important;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.clickable-card-blue:hover {
+  text-decoration: underline;
+}
+
+.clickable-card-blue:active {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
